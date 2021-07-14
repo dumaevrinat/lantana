@@ -1,21 +1,30 @@
-import chroma, { Color } from 'chroma-js'
-import React, { FC, useState } from 'react'
-import ColorPicker from './components/ColorPicker'
+import React from 'react'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import Lantana from './pages/Lantana'
+import ColorBrewer from './pages/ColorBrewer'
 
 
-const App: FC = () => {
-    const [color, setColor] = useState<Color>(chroma('#ff1'))
+const App: React.FC = () => {
 
     return (
-        <>
-            <div className='flex flex-col items-center p-4 mx-auto max-w-6xl gap-6'>
-                <div
-                    className='rounded-xl w-32 h-32'
-                    style={{ backgroundColor: color.hex() }}
-                />
-                <ColorPicker color={color} onChange={setColor} />
+        <Router>
+            <Header
+                title='lantana'
+                subtitle='tool for creating color palettes'
+            />
+
+            <div className='flex flex-col p-4 mx-auto max-w-7xl gap-6'>
+                <Switch>
+                    <Route path='/' exact component={Lantana} />
+                    <Route path='/colorbrewer' exact component={ColorBrewer} />
+                    <Redirect from='/*' to='/' />
+                </Switch>
             </div>
-        </>
+
+            <Footer />
+        </Router>
     )
 }
 

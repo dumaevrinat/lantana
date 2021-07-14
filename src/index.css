@@ -3,13 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+    h1 {
+        @apply text-4xl; 
+    }
+
+    label {
+        @apply text-xl;
+    }
+    
+    a {
+        @apply text-xl underline hover:no-underline transition-all;
+    }
+
     button {
-        @apply p-2 px-8 border-2 rounded-full transition-all;
-        @apply text-xl font-bold;
+        @apply p-1 px-6 border-2 border-gray-100 rounded-full transition-all ease-in-out;
+        @apply hover:border-gray-300 active:border-black;
+        @apply text-xl text-black;
     }
 
     input {
-        @apply border-none focus:outline-none;
+        @apply border-none focus:outline-none appearance-none;
         @apply text-xl text-black placeholder-gray-400;
     }
 
@@ -19,18 +32,25 @@
     }
 
     input[type='range'] {
-        @apply appearance-none w-full h-0.5 rounded-full bg-gray-200 hover:bg-black outline-none transition-all ease-in-out cursor-pointer;
+        @apply appearance-none w-full h-0.5 rounded-full bg-gray-100 hover:bg-gray-300 focus:bg-black outline-none transition-all ease-in-out cursor-pointer;
     }
 
     input[type='range']::-webkit-slider-thumb {
-        @apply appearance-none w-2.5 h-2.5 rounded-full bg-black cursor-pointer;
+        @apply appearance-none w-2 h-2 rounded-full bg-black cursor-pointer;
+        @apply transition-all;
     }
-}
 
-@layer components {
-    .btn-black {
+    input[type='radio'] {
+        @apply absolute hidden;
+    }
+
+    input[type='radio'] + label {
+        @apply cursor-pointer select-none;
+        @apply p-0.5 px-4 border-2 border-gray-100 rounded-full transition-all ease-in-out;
+        @apply hover:border-gray-300 focus:border-black active:border-black;
+    }
+
+    input[type='radio']:checked + label {
         @apply border-black;
-        @apply hover:bg-gray-50 active:bg-gray-100;
-        @apply text-black;
     }
 }

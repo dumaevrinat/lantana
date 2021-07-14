@@ -14,16 +14,25 @@ module.exports = {
             gray: colors.trueGray
         },
         extend: {
+            borderColor: {
+                DEFAULT: '#000000'
+            },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
+            },
+            gridTemplateColumns: {
+                'auto': 'auto auto'
             },
         },
     },
     variants: {
         extend: {
-            backgroundColor: ['active', 'hover'],
-            scale: ['active', 'hover'],
+            backgroundColor: ['active', 'hover', 'group-focus'],
+            textColor: ['active', 'focus-within'],
+            scale: ['active', 'hover', 'group-hover'],
             boxShadow: ['active'],
+            borderColor: ['active'],
+            borderWidth: ['hover']
         },
     },
     plugins: [],

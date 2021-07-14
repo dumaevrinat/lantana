@@ -1,29 +1,37 @@
+import React from 'react'
+import NumberInput from './NumberInput'
+
 export interface ColorPickerDimensionProps {
-    title: string;
-    value: number;
-    minValue: number;
-    maxValue: number;
-    step: number;
-    onChange: (value: number) => void;
+    title: string
+    value: number
+    minValue: number
+    maxValue: number
+    step: number
+    precision: number
+    onChange: (value: number) => void
 }
 
-const ColorPickerDimension: React.FC<ColorPickerDimensionProps> = ({ title, value, minValue, maxValue, step, onChange }) => {
+const ColorPickerDimension: React.FC<ColorPickerDimensionProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
+    const handleChangeRangeInput = (value: string) => {
+        const parsedValue = parseFloat(value)
+
+        onChange(parsedValue)
+    }
+
     return (
         <div className='flex flex-col gap-1'>
             <div className='flex'>
-                <label className='text-xl select-none mr-2'>
-                    {title + ':'}
+                <label className='flex-grow select-none mr-2'>
+                    {title}
                 </label>
-                <input
-                    className='uppercase'
-                    type='number'
-                    size={3}
-                    readOnly
-                    min={minValue}
-                    max={maxValue}
-                    step={step}
+                <NumberInput
+                    className='text-right'
                     value={value}
-                    onChange={(e) => onChange(parseFloat(e.target.value))}
+                    minValue={minValue}
+                    maxValue={maxValue}
+                    step={step}
+                    precision={precision}
+                    onChange={onChange}
                 />
             </div>
             <input
@@ -32,7 +40,7 @@ const ColorPickerDimension: React.FC<ColorPickerDimensionProps> = ({ title, valu
                 min={minValue}
                 max={maxValue}
                 step={step}
-                onChange={(e) => onChange(parseFloat(e.target.value))}
+                onChange={(e) => handleChangeRangeInput(e.target.value)}
             />
         </div>
     )
