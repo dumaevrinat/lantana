@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import NumberInput from './NumberInput'
 
-export interface ColorPickerDimensionProps {
+export interface ColorPickerControlProps {
     title: string
     value: number
     minValue: number
@@ -11,21 +11,27 @@ export interface ColorPickerDimensionProps {
     onChange: (value: number) => void
 }
 
-const ColorPickerDimension: React.FC<ColorPickerDimensionProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
-    const handleChangeRangeInput = (value: string) => {
-        const parsedValue = parseFloat(value)
+const style = {
+    control: 'flex flex-col gap-1',
+    label: 'flex-grow select-none mr-2',
+    numberInput: 'text-right'
+}
+
+const ColorPickerControl: React.FC<ColorPickerControlProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
+    const handleChangeRangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+        const parsedValue = parseFloat(e.target.value)
 
         onChange(parsedValue)
     }
 
     return (
-        <div className='flex flex-col gap-1'>
+        <div className={style.control}>
             <div className='flex'>
-                <label className='flex-grow select-none mr-2'>
+                <label className={style.label}>
                     {title}
                 </label>
                 <NumberInput
-                    className='text-right'
+                    className={{ input: style.numberInput }}
                     value={value}
                     minValue={minValue}
                     maxValue={maxValue}
@@ -40,10 +46,10 @@ const ColorPickerDimension: React.FC<ColorPickerDimensionProps> = ({ title, valu
                 min={minValue}
                 max={maxValue}
                 step={step}
-                onChange={(e) => handleChangeRangeInput(e.target.value)}
+                onChange={handleChangeRangeInput}
             />
         </div>
     )
 }
 
-export default ColorPickerDimension
+export default ColorPickerControl

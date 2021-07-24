@@ -1,40 +1,60 @@
+import chroma from 'chroma-js'
+import { brewer } from 'chroma-js'
 import React, { useContext } from 'react'
-import { AppContext } from '../state/context'
-import { selectColorsFromColorPickers } from '../state/selectors'
+import { ColorBrewerContext } from '../state/color-brewer/context'
+import { selectPaletteName } from '../state/color-brewer/selectors'
+import { LantanaContext } from '../state/lantana/context'
+import { selectColorsFromColorPickers } from '../state/lantana/selectors'
+import TabLink from './TabLink'
 
-export interface HeaderProps {
-    title: string,
-    subtitle: string
+const style = {
+    header: 'flex flex-nowrap mb-6 mt-4 no-scrollbar overflow-x-scroll scroll-snap-x',
+    tabLink: 'px-3 scroll-snap-align-start'
 }
 
-const Header: React.FC<HeaderProps> = ({ title, subtitle }) => {
-    const { state } = useContext(AppContext)
+const Header: React.FC = () => {
+    const { lantanaState } = useContext(LantanaContext)
+    const { colorBrewerState } = useContext(ColorBrewerContext)
 
-    const colors = selectColorsFromColorPickers(state)
+    const lantanaColors = selectColorsFromColorPickers(lantanaState)
+
+    const colorBrewerColors = chroma
+        .scale(brewer[selectPaletteName(colorBrewerState)])
+        .colors(3, null)
 
     return (
-        <header className='flex flex-col items-center p-8 pb-10'>
-            <div className='group flex flex-wrap justify-center select-none bg-white hover:bg-black transition-all ease-in-out duration-300 border-2 rounded-full py-2 px-6'>
-                <h1 className='text-black group-hover:text-white transition-colors ease-in-out duration-300'>
-                    {title}
-                </h1>
-                <div className='flex flex-nowrap'>
-                    {colors.map((color, index) =>
-                        <div key={index} className='flex items-center'>
-                            <h1 style={{ color: color.hex() }}>•</h1>
-                            {index + 1 !== colors.length &&
-                                <h1 className='text-black group-hover:text-white transition-colors ease-in-out duration-300'>
-                                    {'->'}
-                                </h1>
-                            }
-                        </div>
-                    )}
-                </div>
-            </div>
+        <header className={style.header}>
+            <TabLink
+                className={style.tabLink}
+                description='tool for creating color schemes'
+                to='/'
+                activeOnlyWhenExact
+            >
+                <span>lantana</span>
 
-            <p className='text-base text-center'>
-                {subtitle}
-            </p>
+                {lantanaColors.map((color, index) =>
+                    <div key={index} className='flex items-center'>
+                        <span style={{ color: color.hex() }}>•</span>
+                        {index + 1 !== lantanaColors.length && <span>{'->'}</span>}
+                    </div>
+                )}
+            </TabLink>
+
+            <TabLink
+                className={style.tabLink}
+                description='color schemes by Dr. Cynthia Brewer'
+                to='/colorbrewer'
+                activeOnlyWhenExact
+            >
+                <span>colorbrewer</span>
+                
+                {colorBrewerColors.map((color, index) =>
+                    <div key={index}>
+                        <span style={{ color: color.hex() }}>•</span>
+                    </div>
+                )}
+
+            </TabLink>
         </header>
     )
 }

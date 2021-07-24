@@ -1,23 +1,25 @@
 import React from 'react'
+import { Color } from 'chroma-js'
+import PaletteColor from './PaletteColor'
 
 export interface PaletteProps {
-    colors: string[]
+    colors: Color[]
 }
 
-const Palette: React.FC<PaletteProps> = ({colors}) => {
+const style = {
+    palette: 'w-1/3 min-w-min sm:w-auto flex flex-col sm:flex-grow self-stretch overflow-hidden rounded-3xl'
+}
 
+const Palette: React.FC<PaletteProps> = ({ colors }) => {
     return (
-        <div className='flex flex-wrap gap-4'>
+        <div className={style.palette}>
             {colors.map((color, index) =>
-                <div key={index} className='flex flex-col gap-2'>
-                    <div className='w-20 h-20 flex rounded-xl transition-all ease-out' style={{ backgroundColor: color }} />
-                    <p className='text-base'>
-                        {color}
-                    </p>
-                </div>
+                <PaletteColor
+                    key={index}
+                    color={color}
+                />
             )}
         </div>
-
     )
 }
 

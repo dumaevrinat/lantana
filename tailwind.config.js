@@ -15,7 +15,7 @@ module.exports = {
         },
         extend: {
             borderColor: {
-                DEFAULT: '#000000'
+                DEFAULT: '#121212'
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
@@ -23,16 +23,42 @@ module.exports = {
             gridTemplateColumns: {
                 'auto': 'auto auto'
             },
+            transitionProperty: {
+                'height': 'height',
+                'spacing': 'margin, padding',
+            },
+            animation: {
+                'bounce-1': 'bounce 400ms linear 1',
+            },
+            keyframes: {
+                bounce: {
+                    '0%, 100%': {
+                        transform: 'translateY(0)',
+                        animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+                    },
+
+                    '50%': {
+                        transform: 'translateY(-20%)',
+                        animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+                    },
+                },
+
+            }
         },
     },
     variants: {
         extend: {
             backgroundColor: ['active', 'hover', 'group-focus'],
+            margin: ['first', 'last'],
             textColor: ['active', 'focus-within'],
             scale: ['active', 'hover', 'group-hover'],
             boxShadow: ['active'],
             borderColor: ['active'],
-            borderWidth: ['hover']
+            borderWidth: ['hover'],
+            visibility: ['hover', 'group-hover'],
+            flexGrow: ['hover'],
+            display: ['hover', 'group-hover'],
+            height: ['hover', 'group-hover']
         },
     },
     plugins: [],

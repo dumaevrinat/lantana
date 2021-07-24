@@ -2,28 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    h1 {
-        @apply text-4xl; 
+@layer utilities {
+    .content-stretch {
+        align-content: stretch;
     }
 
+    .tap-highlight-transparent {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .scroll-snap-x {
+        scroll-snap-type: x mandatory;
+    }
+
+    .scroll-snap-align-start {
+        scroll-snap-align: start;
+    }
+}
+
+@layer base {
+    body, html {
+        @apply h-full;
+    }
+    
     label {
-        @apply text-xl;
+        @apply text-lg;
     }
     
     a {
-        @apply text-xl underline hover:no-underline transition-all;
+        @apply text-lg no-underline outline-none tap-highlight-transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
     }
 
     button {
-        @apply p-1 px-6 border-2 border-gray-100 rounded-full transition-all ease-in-out;
+        @apply py-2 px-6 border-2 border-gray-100 rounded-full outline-none appearance-none tap-highlight-transparent transition-all ease-in-out;
         @apply hover:border-gray-300 active:border-black;
-        @apply text-xl text-black;
+        @apply text-lg text-black;
+        -webkit-appearance: none;
+        -moz-appearance: none;
     }
 
     input {
-        @apply border-none focus:outline-none appearance-none;
-        @apply text-xl text-black placeholder-gray-400;
+        @apply border-none outline-none appearance-none tap-highlight-transparent;
+        @apply text-lg text-black placeholder-gray-400;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    input[type='number'] {
+        @apply w-full;
     }
 
     input[type='number']::-webkit-outer-spin-button,
@@ -32,11 +69,11 @@
     }
 
     input[type='range'] {
-        @apply appearance-none w-full h-0.5 rounded-full bg-gray-100 hover:bg-gray-300 focus:bg-black outline-none transition-all ease-in-out cursor-pointer;
+        @apply w-full h-0.5 rounded-full bg-gray-100 hover:bg-gray-300 focus:bg-black transition-all ease-in-out cursor-pointer;
     }
 
     input[type='range']::-webkit-slider-thumb {
-        @apply appearance-none w-2 h-2 rounded-full bg-black cursor-pointer;
+        @apply outline-none appearance-none w-2 h-2 rounded-full bg-black cursor-pointer;
         @apply transition-all;
     }
 
@@ -45,12 +82,19 @@
     }
 
     input[type='radio'] + label {
-        @apply cursor-pointer select-none;
-        @apply p-0.5 px-4 border-2 border-gray-100 rounded-full transition-all ease-in-out;
+        @apply cursor-pointer select-none tap-highlight-transparent;
+        @apply py-0.5 px-3 border-2 border-white rounded-full transition-all ease-in-out;
         @apply hover:border-gray-300 focus:border-black active:border-black;
     }
 
     input[type='radio']:checked + label {
         @apply border-black;
+    }
+}
+
+
+@layer components {
+    .a-tablink {
+        @apply py-1 px-5 border-2 rounded-full border-white hover:border-gray-300 focus:border-black active:border-black transition-colors;
     }
 }

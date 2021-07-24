@@ -1,32 +1,39 @@
 import React, { ChangeEvent, useState } from 'react'
 import chroma, { Color } from 'chroma-js'
-import { isValidHex } from '../utils/color'
-import ColorPickerDimension from './ColorPickerDimension'
+import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../utils/color'
+import ColorPickerControl from './ColorPickerControl'
 
 export interface ColorPickerProps {
     color: Color
     onChangeColor: (color: Color) => void
 }
 
+const style = {
+    colorPicker: 'flex-1 flex-col items-start mb-4',
+    title: 'text-black transition-all ease-in-out mb-4',
+    titleInput: 'uppercase text-3xl font-semibold',
+    controls: 'flex flex-col gap-5 w-full'
+}
+
 const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
-    const [h, s, l] = color.hsl()
+    const [h, s, l] = colorToPercentageHsl(color)
 
     const [hex, setHex] = useState<string>(color.hex().substring(1))
-    const [hue, setHue] = useState<number>(Math.round(isNaN(h) ? 0 : h))
-    const [saturation, setSaturation] = useState<number>(Math.round(s * 100))
-    const [lightness, setLightness] = useState<number>(Math.round(l * 100))
+    const [hue, setHue] = useState<number>(h)
+    const [saturation, setSaturation] = useState<number>(s)
+    const [lightness, setLightness] = useState<number>(l)
 
     const handleChangeHex = (e: ChangeEvent<HTMLInputElement>) => {
-        const hex = e.target.value.replace(/[^0-9A-F]/ig, '').substring(0, 6)
+        const hex = formatHexString(e.target.value)
         setHex(hex)
 
         if (isValidHex(hex)) {
             const newColor = chroma(hex)
-            const [newHue, newSaturation, newLightness] = newColor.hsl()
+            const [newHue, newSaturation, newLightness] = colorToPercentageHsl(newColor)
 
-            setHue(Math.round(isNaN(newHue) ? 0 : newHue))
-            setSaturation(Math.round(newSaturation * 100))
-            setLightness(Math.round(newLightness * 100))
+            setHue(newHue)
+            setSaturation(newSaturation)
+            setLightness(newLightness)
 
             onChangeColor(newColor)
         }
@@ -34,8 +41,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
 
     const handleChangeHue = (newHue: number) => {
         setHue(newHue)
-
-        const newColor = chroma.hsl(newHue, saturation / 100, lightness / 100)
+        
+        const newColor = percentageHslToColor(newHue, saturation, lightness)
         setHex(newColor.hex().substring(1))
         onChangeColor(newColor)
     }
@@ -43,7 +50,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
     const handleChangeSaturation = (newSaturation: number) => {
         setSaturation(newSaturation)
 
-        const newColor = chroma.hsl(hue, newSaturation / 100, lightness / 100)
+        const newColor = percentageHslToColor(hue, newSaturation, lightness)
         setHex(newColor.hex().substring(1))
         onChangeColor(newColor)
     }
@@ -51,26 +58,25 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
     const handleChangeLightness = (newLightness: number) => {
         setLightness(newLightness)
 
-        const newColor = chroma.hsl(hue, saturation / 100, newLightness / 100)
+        const newColor = percentageHslToColor(hue, saturation, newLightness)
         setHex(newColor.hex().substring(1))
         onChangeColor(newColor)
     }
 
 
     return (
-        <div className='flex flex-col items-start max-w-xs'>
-            <div className='focus-within:text-gray-100 text-black transition-all ease-in-out flex items-center mb-4'>
-                <p className='text-3xl font-semibold text-inherit select-none'>#</p>
+        <div className={style.colorPicker}>
+            <div className={style.title}>
                 <input
-                    className='uppercase text-3xl font-semibold'
+                    className={style.titleInput}
                     type='text'
                     size={6}
                     value={hex}
                     onChange={handleChangeHex}
                 />
             </div>
-            <div className='flex flex-col gap-7 w-full'>
-                <ColorPickerDimension
+            <div className={style.controls}>
+                <ColorPickerControl
                     title='hue'
                     value={hue}
                     minValue={0}
@@ -79,7 +85,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     precision={0}
                     onChange={handleChangeHue}
                 />
-                <ColorPickerDimension
+                <ColorPickerControl
                     title='saturation'
                     value={saturation}
                     minValue={0}
@@ -88,7 +94,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     precision={0}
                     onChange={handleChangeSaturation}
                 />
-                <ColorPickerDimension
+                <ColorPickerControl
                     title='lightness'
                     value={lightness}
                     minValue={0}

@@ -1,17 +1,16 @@
 import chroma from 'chroma-js'
 import { nanoid } from 'nanoid'
-import { AppState } from '../types/types'
-import { ActionType, AppActions } from './actions'
+import { LantanaState } from '../../types/types'
+import { ActionType, Actions } from './actions'
 
-const initialFirstColor = chroma.hsl(350, 1, 0.7)
-const initialSecondColor = chroma.hsl(280, 1, 0.7)
-const initialThirdColor = chroma.hsl(350, 1, 0.7)
+const initialFirstColor = chroma.hsl(347, 1, 0.78)
+const initialSecondColor = chroma.hsl(242, 1, 0.16)
 const initialPaletteSize = 9
 const initialPaletteMode = 'rgb'
 const initialGamma = 1
 
 
-export const initialAppState: AppState = {
+export const initialState: LantanaState = {
     colorPickers: [
         {
             id: nanoid(),
@@ -29,7 +28,7 @@ export const initialAppState: AppState = {
     }
 }
 
-export const appReducer = (state: AppState, action: AppActions): AppState => {
+export const lantanaReducer = (state: LantanaState, action: Actions): LantanaState => {
     switch (action.type) {
         case ActionType.AddColorPicker:
             return {

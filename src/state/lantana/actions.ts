@@ -1,5 +1,5 @@
 import { InterpolationMode } from 'chroma-js'
-import { Picker, Palette } from '../types/types'
+import { Picker, Palette } from '../../types/types'
 
 export enum ActionType {
     AddColorPicker,
@@ -82,7 +82,7 @@ export const setGamma = (gamma: number): SetGamma => ({
 })
 
 
-export type AppActions = AddColorPicker
+export type Actions = AddColorPicker
     | UpdateColorPicker
     | DeleteColorPicker
     | SetPalette

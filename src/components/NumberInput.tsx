@@ -1,8 +1,13 @@
 import { ChangeEvent, useEffect, useState, WheelEvent } from 'react'
 import { toPrecision } from '../utils/number'
 
+interface ClassNameProps {
+    inputWrapper?: string
+    input?: string
+}
+
 export interface NumberInputProps {
-    className?: string
+    className?: ClassNameProps
     value: number
     minValue: number
     maxValue: number
@@ -67,18 +72,21 @@ const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, m
 
 
     return (
-        <input
-            className={className}
+        <div className={className?.inputWrapper}>
+            <input
+            className={className?.input}
             type='number'
             min={minValue}
             max={maxValue}
             step={step}
+            size={1}
             value={inputValue}
             onChange={handleChange}
             onBlur={handleBlur}
             onFocus={handleFocus}
             onWheel={handleWheel}
         />
+        </div>
     )
 }
 
