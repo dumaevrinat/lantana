@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
@@ -10,8 +10,8 @@ import ColorBrewer from './pages/ColorBrewer'
 import Lantana from './pages/Lantana'
 
 const style = {
-    root: 'max-w-screen-2xl sm:min-h-screen m-auto flex flex-col content-stretch',
-    content: 'flex flex-1 items-start justify-between p-4 gap-6 sm:gap-10'
+    root: 'max-w-screen-2xl min-h-full m-auto flex flex-col content-stretch',
+    content: 'flex flex-1 items-start justify-between p-3 gap-6 sm:gap-10'
 }
 
 const App: React.FC = () => {

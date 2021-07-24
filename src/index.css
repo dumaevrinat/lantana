@@ -30,10 +30,10 @@
 }
 
 @layer base {
-    body, html {
+    html, body, #root {
         @apply h-full;
     }
-    
+
     label {
         @apply text-lg;
     }
