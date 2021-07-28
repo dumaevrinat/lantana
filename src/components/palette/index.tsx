@@ -1,6 +1,6 @@
 import React from 'react'
 import { Color } from 'chroma-js'
-import PaletteColor from './PaletteColor'
+import PaletteColor from '../palette-color'
 
 export interface PaletteProps {
     colors: Color[]

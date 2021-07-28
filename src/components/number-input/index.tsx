@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState, WheelEvent } from 'react'
-import { toPrecision } from '../utils/number'
+import { toPrecision } from '../../utils/number'
 
 interface ClassNameProps {
     inputWrapper?: string
@@ -49,9 +49,9 @@ const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, m
     }
 
     const handleWheel = (e: WheelEvent<HTMLInputElement>) => {
-        const newValue = e.deltaY > 0 ? value + step : value - step
-
         if (focus) {
+            const newValue = e.deltaY > 0 ? value + step : value - step
+
             setParsedValue(toPrecision(newValue, precision))
         }
     }
@@ -74,18 +74,18 @@ const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, m
     return (
         <div className={className?.inputWrapper}>
             <input
-            className={className?.input}
-            type='number'
-            min={minValue}
-            max={maxValue}
-            step={step}
-            size={1}
-            value={inputValue}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            onWheel={handleWheel}
-        />
+                className={className?.input}
+                type='number'
+                min={minValue}
+                max={maxValue}
+                step={step}
+                size={1}
+                value={inputValue}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                onFocus={handleFocus}
+                onWheel={handleWheel}
+            />
         </div>
     )
 }

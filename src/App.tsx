@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Footer from './components/footer'
+import Header from './components/header'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { initialState as lantanaInitialState, lantanaReducer } from './state/lantana/reducer'
 import { initialState as colorBrewerInitialState, colorBrewerReducer } from './state/color-brewer/reducer'

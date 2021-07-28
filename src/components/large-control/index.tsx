@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react'
-import NumberInput from './NumberInput'
+import NumberInput from '../number-input'
 
-export interface ColorPickerControlProps {
+export interface LargeControlProps {
     title: string
     value: number
     minValue: number
@@ -17,7 +17,7 @@ const style = {
     numberInput: 'text-right'
 }
 
-const ColorPickerControl: React.FC<ColorPickerControlProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
+const LargeControl: React.FC<LargeControlProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
     const handleChangeRangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         const parsedValue = parseFloat(e.target.value)
 
@@ -52,4 +52,4 @@ const ColorPickerControl: React.FC<ColorPickerControlProps> = ({ title, value, m
     )
 }
 
-export default ColorPickerControl
+export default LargeControl

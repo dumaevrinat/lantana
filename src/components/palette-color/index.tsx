@@ -2,7 +2,7 @@ import { Color } from 'chroma-js'
 import clsx from 'clsx'
 import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
-import { isLightColor } from '../utils/color'
+import { isLightColor } from '../../utils/color'
 
 export interface PaletteColorProps {
     color: Color

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import chroma, { Color } from 'chroma-js'
-import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../utils/color'
-import ColorPickerControl from './ColorPickerControl'
+import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../../utils/color'
+import LargeControl from '../large-control'
 
 export interface ColorPickerProps {
     color: Color
@@ -76,7 +76,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                 />
             </div>
             <div className={style.controls}>
-                <ColorPickerControl
+                <LargeControl
                     title='hue'
                     value={hue}
                     minValue={0}
@@ -85,7 +85,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     precision={0}
                     onChange={handleChangeHue}
                 />
-                <ColorPickerControl
+                <LargeControl
                     title='saturation'
                     value={saturation}
                     minValue={0}
@@ -94,7 +94,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     precision={0}
                     onChange={handleChangeSaturation}
                 />
-                <ColorPickerControl
+                <LargeControl
                     title='lightness'
                     value={lightness}
                     minValue={0}

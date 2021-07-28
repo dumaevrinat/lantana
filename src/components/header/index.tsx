@@ -1,11 +1,11 @@
 import chroma from 'chroma-js'
 import { brewer } from 'chroma-js'
 import React, { useContext } from 'react'
-import { ColorBrewerContext } from '../state/color-brewer/context'
-import { selectPaletteName } from '../state/color-brewer/selectors'
-import { LantanaContext } from '../state/lantana/context'
-import { selectColorsFromColorPickers } from '../state/lantana/selectors'
-import TabLink from './TabLink'
+import { ColorBrewerContext } from '../../state/color-brewer/context'
+import { selectPaletteName } from '../../state/color-brewer/selectors'
+import { LantanaContext } from '../../state/lantana/context'
+import { selectColorsFromColorPickers } from '../../state/lantana/selectors'
+import TabLink from '../tab-link'
 
 const style = {
     header: 'flex flex-nowrap mb-6 mt-4 no-scrollbar overflow-x-scroll scroll-snap-x',

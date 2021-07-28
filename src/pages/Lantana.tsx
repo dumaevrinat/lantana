@@ -1,14 +1,14 @@
 import React, { ChangeEvent, useContext } from 'react'
-import Palette from '../components/Palette'
+import Palette from '../components/palette'
 import { LantanaContext } from '../state/lantana/context'
 import { selectColorPickers, selectGamma, selectPaletteColors, selectPaletteMode, selectPaletteSize } from '../state/lantana/selectors'
 import { setGamma, setPaletteMode, setPaletteSize, updateColorPicker } from '../state/lantana/actions'
 import { Color, InterpolationMode } from 'chroma-js'
-import Settings from '../components/Settings'
-import ColorPicker from '../components/ColorPicker'
-import Radio from '../components/Radio'
-import NumberInput from '../components/NumberInput'
-import SettingsItem from '../components/SettingsItem'
+import Settings from '../components/settings'
+import ColorPicker from '../components/color-picker'
+import Radio from '../components/radio'
+import NumberInput from '../components/number-input'
+import SettingsItem from '../components/settings-item'
 
 const style = {
     colorPickers: 'flex flex-col sm:flex-row gap-8',
