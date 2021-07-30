@@ -9,17 +9,16 @@ import Radio from '../radio'
 export interface TabLinkProps {
     description?: string
     settings: SettingsName
-    className?: string
     children: React.ReactNode
 }
 
 const style = {
-    tabLink: 'flex flex-col items-center transition-all',
+    tabLink: 'flex flex-col items-center px-3 scroll-snap-align-start transition-all',
     radioLabel: 'flex flex-nowrap items-center justify-center min-w-max text-3xl sm:text-4xl',
     description: 'text-base text-center cursor-default',
 }
 
-const TabLink: React.FC<TabLinkProps> = ({ description, settings, className, children }) => {
+const TabLink: React.FC<TabLinkProps> = ({ description, settings, children }) => {
     const { globalState, dispatch } = useContext(GlobalContext)
     
     const checked = selectCurrentSettings(globalState) === settings
@@ -31,7 +30,7 @@ const TabLink: React.FC<TabLinkProps> = ({ description, settings, className, chi
     }
 
     return (
-        <div className={clsx(style.tabLink, className)}>
+        <div className={style.tabLink}>
             <Radio
                 id={settings}
                 className={{label: style.radioLabel}}

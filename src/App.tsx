@@ -9,7 +9,7 @@ import { ColorBrewerContext } from './state/color-brewer/context'
 import ColorBrewer from './settings/ColorBrewer'
 import Lantana from './settings/Lantana'
 import { GlobalContext } from './state/global/context'
-import SettingsComponent from './components/settings'
+import { default as SettingsLayout } from './components/settings'
 import { SettingsName } from './types'
 import Palette from './components/palette'
 
@@ -32,12 +32,12 @@ const App: React.FC = () => {
                         <Header />
 
                         <div className={style.content}>
-                            <SettingsComponent>
+                            <SettingsLayout>
                                 {globalState.currentSettings === SettingsName.Lantana && <Lantana />}
                                 {globalState.currentSettings === SettingsName.ColorBrewer && <ColorBrewer />}
-                            </SettingsComponent>
+                            </SettingsLayout>
 
-                            <Palette/>
+                            <Palette />
                         </div>
 
                         <Footer />
