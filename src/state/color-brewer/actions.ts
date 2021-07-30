@@ -1,5 +1,5 @@
 import { brewer } from 'chroma-js'
-import { ColorBrewerGroupName } from '../../types/types'
+import { ColorBrewerGroupName } from '../../types'
 
 export enum ActionType {
     SetPaletteSize,

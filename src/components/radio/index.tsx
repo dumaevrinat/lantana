@@ -1,7 +1,14 @@
+import clsx from 'clsx'
 import React from 'react'
+
+interface ClassNameProps {
+    radio?: string
+    label?: string
+}
 
 export interface RadioProps {
     id: string
+    className?: ClassNameProps
     value: string | number
     checked: boolean
     onChange: React.ChangeEventHandler<HTMLInputElement>
@@ -9,12 +16,13 @@ export interface RadioProps {
 }
 
 const style = {
-    radio: 'flex'
+    radio: 'flex',
+    label: ''
 }
 
-const Radio: React.FC<RadioProps> = ({ id, children, value, checked, onChange }) => {
+const Radio: React.FC<RadioProps> = ({ id, className, children, value, checked, onChange }) => {
     return (
-        <div className={style.radio}>
+        <div className={clsx(style.radio, className?.radio)}>
             <input
                 id={id}
                 type='radio'
@@ -22,7 +30,10 @@ const Radio: React.FC<RadioProps> = ({ id, children, value, checked, onChange })
                 checked={checked}
                 onChange={onChange}
             />
-            <label htmlFor={id}>
+            <label
+                htmlFor={id}
+                className={clsx(style.label, className?.label)}
+            >
                 {children ? children : value}
             </label>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColorBrewerState } from '../../types/types'
+import { ColorBrewerState } from '../../types'
 import { Actions } from './actions'
 import { initialState } from './reducer'
 

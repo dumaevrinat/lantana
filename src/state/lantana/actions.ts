@@ -1,5 +1,5 @@
 import { InterpolationMode } from 'chroma-js'
-import { Picker, Palette } from '../../types/types'
+import { Picker, Palette } from '../../types'
 
 export enum ActionType {
     AddColorPicker,

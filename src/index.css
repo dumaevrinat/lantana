@@ -94,7 +94,7 @@
 
 
 @layer components {
-    .a-tablink {
+    .tablink {
         @apply py-1 px-5 border-2 rounded-full border-white hover:border-gray-300 focus:border-black active:border-black transition-colors;
     }
 }

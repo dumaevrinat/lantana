@@ -1,12 +1,12 @@
 import React from 'react'
-import { LantanaState } from '../../types'
+import { GlobalState } from '../../types'
 import { Actions } from './actions'
 import { initialState } from './reducer'
 
-export const LantanaContext = React.createContext<{
-    lantanaState: LantanaState
+export const GlobalContext = React.createContext<{
+    globalState: GlobalState
     dispatch: React.Dispatch<Actions>
 }>({
-    lantanaState: initialState,
+    globalState: initialState,
     dispatch: () => undefined
 })

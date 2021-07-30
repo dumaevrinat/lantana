@@ -1,42 +1,49 @@
 import clsx from 'clsx'
-import React from 'react'
-import { NavLink, useRouteMatch } from 'react-router-dom'
+import React, { ChangeEvent, useContext } from 'react'
+import { setCurrentSettings } from '../../state/global/actions'
+import { GlobalContext } from '../../state/global/context'
+import { selectCurrentSettings } from '../../state/global/selectors'
+import { SettingsName } from '../../types'
+import Radio from '../radio'
 
 export interface TabLinkProps {
     description?: string
-    to: string
-    activeOnlyWhenExact: boolean
+    settings: SettingsName
     className?: string
     children: React.ReactNode
 }
 
 const style = {
     tabLink: 'flex flex-col items-center transition-all',
-    navLink: 'a-tablink select-none flex flex-nowrap items-center justify-center min-w-max text-3xl sm:text-4xl',
-    navLinkActive: 'border-black hover:border-black active:border-black',
+    radioLabel: 'flex flex-nowrap items-center justify-center min-w-max text-3xl sm:text-4xl',
     description: 'text-base text-center cursor-default',
-
 }
 
-const TabLink: React.FC<TabLinkProps> = ({ description, to, activeOnlyWhenExact, className, children }) => {
-    const match = useRouteMatch({
-        path: to,
-        exact: activeOnlyWhenExact
-    })
+const TabLink: React.FC<TabLinkProps> = ({ description, settings, className, children }) => {
+    const { globalState, dispatch } = useContext(GlobalContext)
+    
+    const checked = selectCurrentSettings(globalState) === settings
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const settings = e.target.value
+
+        dispatch(setCurrentSettings(settings as SettingsName))
+    }
 
     return (
         <div className={clsx(style.tabLink, className)}>
-            <NavLink
-                exact
-                to={to}
-                className={style.navLink}
-                activeClassName={style.navLinkActive}
+            <Radio
+                id={settings}
+                className={{label: style.radioLabel}}
+                value={settings}
+                checked={checked}
+                onChange={handleChange}
             >
                 {children}
-            </NavLink>
+            </Radio>
 
             {description &&
-                <span className={clsx(style.description, !match && 'opacity-0')}>
+                <span className={clsx(style.description, !checked && 'invisible')}>
                     {description}
                 </span>
             }

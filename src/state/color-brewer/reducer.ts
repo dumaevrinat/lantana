@@ -1,4 +1,4 @@
-import { ColorBrewerState } from '../../types/types'
+import { ColorBrewerState, SettingsName } from '../../types'
 import { ActionType, Actions } from './actions'
 
 const initialPaletteSize = 9
@@ -6,6 +6,7 @@ const initialGroupName = 'sequential'
 const initialPaletteName = 'RdPu'
 
 export const initialState: ColorBrewerState = {
+    name: SettingsName.ColorBrewer,
     paletteSize: initialPaletteSize,
     groupName: initialGroupName,
     paletteName: initialPaletteName

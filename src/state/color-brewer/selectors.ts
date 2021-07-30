@@ -1,5 +1,5 @@
 import chroma, { brewer, Color } from 'chroma-js'
-import { ColorBrewerGroupName, ColorBrewerState } from '../../types/types'
+import { ColorBrewerGroupName, ColorBrewerState } from '../../types'
 
 export const selectPaletteSize = (state: ColorBrewerState): number => state.paletteSize
 export const selectGroupName = (state: ColorBrewerState): ColorBrewerGroupName => state.groupName

@@ -1,6 +1,6 @@
 import chroma from 'chroma-js'
 import { nanoid } from 'nanoid'
-import { LantanaState } from '../../types/types'
+import { LantanaState, SettingsName } from '../../types'
 import { ActionType, Actions } from './actions'
 
 const initialFirstColor = chroma.hsl(347, 1, 0.78)
@@ -11,6 +11,7 @@ const initialGamma = 1
 
 
 export const initialState: LantanaState = {
+    name: SettingsName.Lantana,
     colorPickers: [
         {
             id: nanoid(),

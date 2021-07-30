@@ -1,5 +1,5 @@
 import chroma, { Color, InterpolationMode } from 'chroma-js'
-import { LantanaState, Palette, Picker } from '../../types/types'
+import { LantanaState, Palette, Picker } from '../../types'
 
 
 export const selectPalette = (state: LantanaState): Palette => state.palette
