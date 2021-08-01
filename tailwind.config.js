@@ -38,7 +38,7 @@ module.exports = {
             boxShadow: ['active'],
             borderColor: ['active'],
             borderWidth: ['hover'],
-            visibility: ['hover', 'group-hover'],
+            visibility: ['hover', 'group-hover', 'group-focus'],
             flexGrow: ['hover'],
             display: ['hover', 'group-hover'],
             height: ['hover', 'group-hover']
