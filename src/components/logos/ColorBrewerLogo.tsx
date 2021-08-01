@@ -1,5 +1,4 @@
 import chroma, { brewer } from 'chroma-js'
-import { Color } from 'chroma-js'
 import React, { useContext } from 'react'
 import { ColorBrewerContext } from '../../state/color-brewer/context'
 import { selectPaletteName } from '../../state/color-brewer/selectors'

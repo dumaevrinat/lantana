@@ -3,8 +3,8 @@ import { nanoid } from 'nanoid'
 import { LantanaState, SettingsName } from '../../types'
 import { ActionType, Actions } from './actions'
 
-const initialFirstColor = chroma.hsl(347, 1, 0.78)
-const initialSecondColor = chroma.hsl(242, 1, 0.16)
+const initialFirstColor = chroma.hsl(358, 1, 0.92)
+const initialSecondColor = chroma.hsl(238, 1, 0.10)
 const initialPaletteSize = 9
 const initialPaletteMode = 'hsi'
 const initialGamma = 1

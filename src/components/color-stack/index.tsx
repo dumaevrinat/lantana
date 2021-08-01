@@ -6,8 +6,8 @@ export interface ColorStackProps {
 }
 
 const style = {
-    stack: 'flex items-center py-1 box-content first:ml-1.0 last:-mr-1.5',
-    color: 'w-5 h-5 rounded-full -ml-1.5'
+    stack: 'flex items-center py-1 px-0.5 box-content first:ml-1.0 last:-mr-2',
+    color: 'w-5 h-5 rounded-full -ml-2'
 }
 
 const ColorStack: React.FC<ColorStackProps> = ({ colors }) => {
