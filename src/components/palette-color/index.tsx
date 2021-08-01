@@ -17,9 +17,9 @@ export interface PaletteColorProps {
 const style = {
     paletteColor: 'group flex flex-1 items-center justify-center tap-highlight-transparent transition-all ease-in-out',
     content: 'h-0 overflow-hidden group-hover:h-auto transition-height ease-in-out select-none',
-    values: 'flex flex-col px-2 py-4 sm:py-6 gap-2 sm:gap-3 items-center justify-center opacity-0 group-hover:opacity-100 text-lg transition-opacity ease-in-out',
-    cssValues: 'flex flex-col gap-0 sm:gap-3 sm:flex-row items-center',
-    value: 'cursor-pointer',
+    values: 'flex flex-col px-2 py-3 sm:py-5 gap-1 sm:gap-2 items-center justify-center opacity-0 group-hover:opacity-100 text-lg transition-opacity ease-in-out',
+    cssValues: 'flex flex-col gap-0 md:gap-2 md:flex-row items-center',
+    value: 'cursor-pointer p-1',
     hexValue: 'font-bold md:text-3xl'
 }
 
@@ -30,7 +30,7 @@ const CopyColorValue: React.FC<CopyColorValueProps> = ({ value, label, className
         copy(value)
 
         setIsCopied(true)
-        setTimeout(() => setIsCopied(false), 800)
+        setTimeout(() => setIsCopied(false), 400)
     }
 
     return (

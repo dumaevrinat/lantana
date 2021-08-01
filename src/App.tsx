@@ -9,14 +9,13 @@ import { ColorBrewerContext } from './state/color-brewer/context'
 import ColorBrewer from './settings/ColorBrewer'
 import Lantana from './settings/Lantana'
 import { GlobalContext } from './state/global/context'
-import { default as SettingsLayout } from './components/settings'
 import { SettingsName } from './types'
 import Palette from './components/palette'
 
-
 const style = {
     root: 'max-w-screen-2xl min-h-full m-auto flex flex-col content-stretch',
-    content: 'flex flex-1 items-start justify-between p-3 gap-6 sm:gap-10'
+    content: 'flex flex-1 items-start justify-between p-3 gap-6 sm:gap-10',
+    settings: 'md:max-w-xl flex-1 flex flex-col gap-6'
 }
 
 const App: React.FC = () => {
@@ -32,10 +31,10 @@ const App: React.FC = () => {
                         <Header />
 
                         <div className={style.content}>
-                            <SettingsLayout>
+                            <div className={style.settings}>
                                 {globalState.currentSettings === SettingsName.Lantana && <Lantana />}
                                 {globalState.currentSettings === SettingsName.ColorBrewer && <ColorBrewer />}
-                            </SettingsLayout>
+                            </div>
 
                             <Palette />
                         </div>
