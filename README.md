@@ -1,6 +1,6 @@
 <div align='center'>
     <a href='//dumaevrinat.github.io/lantana'>
-        <img src='https://user-images.githubusercontent.com/44341469/127882748-45cadd41-db3e-4642-a8cf-025ca4fabe3e.png' height='80'/>
+        <img src='./docs/logo.svg' height='60'/>
     </a>
 
 *Tool for creating color schemes.*
@@ -10,7 +10,8 @@
 
 <p align="center">
     <a href="//dumaevrinat.github.io/lantana">
-      <img src="https://user-images.githubusercontent.com/44341469/127882963-58d122d3-b479-4863-965d-48a067ad6aa1.png" width="800" />
+      <img src="./docs/page_lantana.png" />
+      <img src="./docs/page_colorbrewer.png" />
     </a>
 </p>
 
