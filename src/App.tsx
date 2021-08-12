@@ -14,7 +14,7 @@ import Palette from './components/palette'
 
 const style = {
     root: 'max-w-screen-2xl min-h-full m-auto flex flex-col content-stretch',
-    content: 'flex flex-1 items-start justify-between p-3 gap-6 sm:gap-10',
+    content: 'flex flex-1 items-start justify-between p-3 gap-6',
     settings: 'md:max-w-xl flex-1 flex flex-col gap-6'
 }
 

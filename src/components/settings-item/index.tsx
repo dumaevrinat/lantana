@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../card'
 
 export interface SettingsItemProps {
     label?: string,
@@ -6,14 +7,14 @@ export interface SettingsItemProps {
 }
 
 const style = {
-    settingsItem: 'flex flex-wrap items-center gap-2',
+    card: 'flex flex-wrap items-center gap-2',
     label: '',
     content: 'flex flex-wrap flex-grow gap-2'
 }
 
 const SettingsItem: React.FC<SettingsItemProps> = ({ label, children }) => {
     return (
-        <div className={style.settingsItem}>
+        <Card className={style.card}>
             {label &&
                 <label className={style.label}>
                     {label}
@@ -23,7 +24,7 @@ const SettingsItem: React.FC<SettingsItemProps> = ({ label, children }) => {
             <div className={style.content}>
                 {children}
             </div>
-        </div>
+        </Card>
     )
 }
 
