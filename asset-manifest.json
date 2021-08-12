@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/lantana/static/css/main.99017a63.chunk.css",
-    "main.js": "/lantana/static/js/main.c069faeb.chunk.js",
-    "main.js.map": "/lantana/static/js/main.c069faeb.chunk.js.map",
+    "main.css": "/lantana/static/css/main.cab165f9.chunk.css",
+    "main.js": "/lantana/static/js/main.e5555f19.chunk.js",
+    "main.js.map": "/lantana/static/js/main.e5555f19.chunk.js.map",
     "runtime-main.js": "/lantana/static/js/runtime-main.dbb40c13.js",
     "runtime-main.js.map": "/lantana/static/js/runtime-main.dbb40c13.js.map",
     "static/js/2.a2f5ecc7.chunk.js": "/lantana/static/js/2.a2f5ecc7.chunk.js",
     "static/js/2.a2f5ecc7.chunk.js.map": "/lantana/static/js/2.a2f5ecc7.chunk.js.map",
     "index.html": "/lantana/index.html",
-    "static/css/main.99017a63.chunk.css.map": "/lantana/static/css/main.99017a63.chunk.css.map",
+    "static/css/main.cab165f9.chunk.css.map": "/lantana/static/css/main.cab165f9.chunk.css.map",
     "static/js/2.a2f5ecc7.chunk.js.LICENSE.txt": "/lantana/static/js/2.a2f5ecc7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dbb40c13.js",
     "static/js/2.a2f5ecc7.chunk.js",
-    "static/css/main.99017a63.chunk.css",
-    "static/js/main.c069faeb.chunk.js"
+    "static/css/main.cab165f9.chunk.css",
+    "static/js/main.e5555f19.chunk.js"
   ]
 }
