@@ -13,7 +13,7 @@ const style = {
     card: 'flex-1 flex-col items-start pb-5',
     title: 'text-black transition-all ease-in-out mb-4',
     titleInput: 'uppercase text-3xl font-semibold',
-    controls: 'flex flex-col gap-4 w-full'
+    controls: 'flex flex-col gap-5 sm:gap-8 w-full'
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {

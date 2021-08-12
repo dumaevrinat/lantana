@@ -27,6 +27,23 @@ module.exports = {
                 'height': 'height',
                 'spacing': 'margin, padding',
             },
+            animation: {
+                'bounce-1': 'bounce 450ms ease-in-out 1',
+            },
+            keyframes: {
+                bounce: {
+                    '0%, 100%': {
+                        transform: 'translateY(0)',
+                        animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+                    },
+
+                    '50%': {
+                        transform: 'translateY(-20%)',
+                        animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+                    },
+                },
+
+            }
         },
     },
     variants: {
