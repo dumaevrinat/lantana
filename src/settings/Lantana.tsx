@@ -9,7 +9,7 @@ import NumberInput from '../components/number-input'
 import SettingsItem from '../components/settings-item'
 
 const style = {
-    colorPickers: 'flex flex-col sm:flex-row gap-8',
+    colorPickers: 'flex flex-col sm:flex-row gap-6',
 }
 
 const Lantana: React.FC = () => {

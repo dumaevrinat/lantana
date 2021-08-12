@@ -33,7 +33,7 @@ const TabLink: React.FC<TabLinkProps> = ({ description, settings, children }) =>
         <div className={style.tabLink}>
             <Radio
                 id={settings}
-                className={{label: style.radioLabel}}
+                className={{ label: style.radioLabel }}
                 value={settings}
                 checked={checked}
                 onChange={handleChange}

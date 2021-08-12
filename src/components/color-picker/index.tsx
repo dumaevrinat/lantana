@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from 'react'
 import chroma, { Color } from 'chroma-js'
 import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../../utils/color'
 import LargeControl from '../large-control'
+import Card from '../card'
 
 export interface ColorPickerProps {
     color: Color
@@ -9,10 +10,10 @@ export interface ColorPickerProps {
 }
 
 const style = {
-    colorPicker: 'flex-1 flex-col items-start mb-4',
+    card: 'flex-1 flex-col items-start pb-5',
     title: 'text-black transition-all ease-in-out mb-4',
     titleInput: 'uppercase text-3xl font-semibold',
-    controls: 'flex flex-col gap-5 w-full'
+    controls: 'flex flex-col gap-5 sm:gap-8 w-full'
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
@@ -65,7 +66,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
 
 
     return (
-        <div className={style.colorPicker}>
+        <Card className={style.card}>
             <div className={style.title}>
                 <input
                     className={style.titleInput}
@@ -104,7 +105,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     onChange={handleChangeLightness}
                 />
             </div>
-        </div>
+        </Card>
     )
 }
 

@@ -15,11 +15,10 @@ export interface PaletteColorProps {
 }
 
 const style = {
-    paletteColor: 'group flex flex-1 items-center justify-center tap-highlight-transparent transition-all ease-in-out',
+    paletteColor: 'group flex flex-1 justify-center md:justify-start tap-highlight-transparent transition-all ease-in-out',
     content: 'h-0 overflow-hidden group-hover:h-auto transition-height ease-in-out select-none',
-    values: 'flex flex-col px-2 py-3 sm:py-5 gap-1 sm:gap-2 items-center justify-center opacity-0 group-hover:opacity-100 text-lg transition-opacity ease-in-out',
-    cssValues: 'flex flex-col gap-0 md:gap-2 md:flex-row items-center',
-    value: 'cursor-pointer p-1',
+    values: 'flex flex-col px-2 py-3 sm:py-5 md:pl-8 items-center md:items-start justify-center opacity-0 group-hover:opacity-100 text-lg transition-opacity ease-in-out',
+    value: 'cursor-pointer',
     hexValue: 'font-bold md:text-3xl'
 }
 
@@ -30,18 +29,16 @@ const CopyColorValue: React.FC<CopyColorValueProps> = ({ value, label, className
         copy(value)
 
         setIsCopied(true)
-        setTimeout(() => setIsCopied(false), 400)
     }
 
     return (
-        <>
-            <span
-                className={clsx(style.value, className)}
-                onClick={handleClick}
-            >
-                {isCopied ? 'Copied!' : label}
-            </span>
-        </>
+        <span
+            className={clsx(style.value, className, isCopied && 'animate-bounce-1')}
+            onClick={handleClick}
+            onAnimationEnd={() => setIsCopied(false)}
+        >
+            {isCopied ? 'Copied!' : label}
+        </span>
     )
 }
 
@@ -64,13 +61,10 @@ const PaletteColor: React.FC<PaletteColorProps> = ({ color }) => {
             <div className={style.content}>
                 <div className={clsx(style.values, isLightColor(color) ? 'text-black' : 'text-white')}>
                     <CopyColorValue className={style.hexValue} label={label} value={color.hex()} />
-
-                    <div className={style.cssValues}>
-                        <CopyColorValue label='hsl' value={hslCss} />
-                        <CopyColorValue label='rgb' value={rgbCss} />
-                        <CopyColorValue label='lab' value={labCss} />
-                        <CopyColorValue label='lch' value={lchCss} />
-                    </div>
+                    <CopyColorValue label='hsl' value={hslCss} />
+                    <CopyColorValue label='rgb' value={rgbCss} />
+                    <CopyColorValue label='lab' value={labCss} />
+                    <CopyColorValue label='lch' value={lchCss} />
                 </div>
             </div>
         </div>
