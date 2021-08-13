@@ -28,13 +28,25 @@ export interface ColorBrewerState extends SettingsState {
     paletteName: keyof typeof brewer
 }
 
+export interface CubehelixState extends SettingsState {
+    name: SettingsName.Cubehelix
+    paletteSize: number
+    start: number
+    rotations: number
+    hue: number
+    gamma: number
+    dark: number
+    light: number
+}
+
 export interface GlobalState {
     currentSettings: SettingsName
 }
 
 export enum SettingsName {
     Lantana = 'Lantana',
-    ColorBrewer = 'ColorBrewer'
+    ColorBrewer = 'ColorBrewer',
+    Cubehelix = 'Cubehelix'
 }
 
 export type ColorBrewerGroupName = 'diverging' | 'qualitative' | 'sequential'

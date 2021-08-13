@@ -66,7 +66,6 @@ const Lantana: React.FC = () => {
 
             <SettingsItem label='number of colors'>
                 <NumberInput
-                    className={{ inputWrapper: ' flex-grow' }}
                     value={selectPaletteSize(lantanaState)}
                     minValue={0}
                     maxValue={20}

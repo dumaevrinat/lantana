@@ -3,7 +3,7 @@ import copy from 'copy-to-clipboard'
 import { usePaletteColors } from '../../hooks/use-palette-colors'
 import { SettingsName } from '../../types'
 import TabLink from '../tab-link'
-import { ColorBrewerLogo, LantanaLogo } from '../logos'
+import { ColorBrewerLogo, CubehelixLogo, LantanaLogo } from '../logos'
 
 const style = {
     header: 'flex flex-nowrap justify-between mb-6 mt-4 no-scrollbar overflow-x-scroll scroll-snap-x',
@@ -33,6 +33,13 @@ const Header: React.FC = () => {
                     description='color schemes by Dr. Cynthia Brewer'
                 >
                     <ColorBrewerLogo />
+                </TabLink>
+
+                <TabLink
+                    settings={SettingsName.Cubehelix}
+                    description='colormap with linearly-decreasing brightness'
+                >
+                    <CubehelixLogo />
                 </TabLink>
             </div>
 

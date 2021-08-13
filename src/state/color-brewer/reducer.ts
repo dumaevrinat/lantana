@@ -3,7 +3,7 @@ import { ActionType, Actions } from './actions'
 
 const initialPaletteSize = 9
 const initialGroupName = 'sequential'
-const initialPaletteName = 'YlGnBu'
+const initialPaletteName = 'PuRd'
 
 export const initialState: ColorBrewerState = {
     name: SettingsName.ColorBrewer,
