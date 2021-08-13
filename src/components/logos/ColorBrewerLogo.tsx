@@ -1,4 +1,4 @@
-import chroma, { brewer } from 'chroma-js'
+import chroma from 'chroma-js'
 import React, { useContext } from 'react'
 import { ColorBrewerContext } from '../../state/color-brewer/context'
 import { selectPaletteName } from '../../state/color-brewer/selectors'
@@ -7,7 +7,7 @@ const ColorBrewerLogo: React.FC = () => {
     const { colorBrewerState } = useContext(ColorBrewerContext)
 
     const colors = chroma
-        .scale(brewer[selectPaletteName(colorBrewerState)])
+        .scale(selectPaletteName(colorBrewerState))
         .colors(3, null)
 
     return (
