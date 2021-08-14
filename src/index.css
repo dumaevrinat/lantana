@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer utilities {
+    @variants hover, group-hover {
+        .flex-basis-1 {
+            flex-basis: 1px;
+        }
+    
+        .flex-basis-44 {
+            flex-basis: 11rem;
+        }
+    }
+
     .content-stretch {
         align-content: stretch;
     }

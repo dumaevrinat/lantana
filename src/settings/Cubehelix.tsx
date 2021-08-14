@@ -103,7 +103,7 @@ const Cubehelix: React.FC = () => {
                 <NumberInput
                     value={selectPaletteSize(cubehelixState)}
                     minValue={0}
-                    maxValue={20}
+                    maxValue={30}
                     step={1}
                     precision={0}
                     onChange={handleChangePaletteSize}

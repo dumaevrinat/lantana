@@ -50,41 +50,43 @@ const Lantana: React.FC = () => {
                 )}
             </div>
 
-            <SettingsItem label='interpolation mode'>
-                {modes.map(mode =>
-                    <Radio
-                        key={mode}
-                        id={mode}
-                        value={mode}
-                        checked={selectPaletteMode(lantanaState) === mode}
-                        onChange={handleChangePaletteMode}
-                    >
-                        {mode}
-                    </Radio>
-                )}
-            </SettingsItem>
+            <div className='flex flex-col gap-6'>
+                <SettingsItem label='interpolation mode'>
+                    {modes.map(mode =>
+                        <Radio
+                            key={mode}
+                            id={mode}
+                            value={mode}
+                            checked={selectPaletteMode(lantanaState) === mode}
+                            onChange={handleChangePaletteMode}
+                        >
+                            {mode}
+                        </Radio>
+                    )}
+                </SettingsItem>
 
-            <SettingsItem label='number of colors'>
-                <NumberInput
-                    value={selectPaletteSize(lantanaState)}
-                    minValue={0}
-                    maxValue={20}
-                    step={1}
-                    precision={0}
-                    onChange={handleChangePaletteSize}
-                />
-            </SettingsItem>
+                <SettingsItem label='number of colors'>
+                    <NumberInput
+                        value={selectPaletteSize(lantanaState)}
+                        minValue={0}
+                        maxValue={30}
+                        step={1}
+                        precision={0}
+                        onChange={handleChangePaletteSize}
+                    />
+                </SettingsItem>
 
-            <SettingsItem label='center shift'>
-                <NumberInput
-                    value={selectGamma(lantanaState)}
-                    minValue={0}
-                    maxValue={5}
-                    step={0.1}
-                    precision={1}
-                    onChange={handleChangeGamma}
-                />
-            </SettingsItem>
+                <SettingsItem label='center shift'>
+                    <NumberInput
+                        value={selectGamma(lantanaState)}
+                        minValue={0}
+                        maxValue={5}
+                        step={0.1}
+                        precision={1}
+                        onChange={handleChangeGamma}
+                    />
+                </SettingsItem>
+            </div>
         </>
     )
 }
