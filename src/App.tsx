@@ -16,9 +16,9 @@ import Palette from './components/palette'
 import Cubehelix from './settings/Cubehelix'
 
 const style = {
-    root: 'max-w-screen-2xl min-h-full m-auto flex flex-col content-stretch',
-    content: 'flex flex-1 items-start justify-between p-3 gap-6',
-    settings: 'md:max-w-xl flex-1 flex flex-col gap-6'
+    root: 'max-w-screen-xl min-h-full m-auto flex flex-col content-stretch',
+    content: 'flex flex-1 flex-col p-3 gap-6',
+    settings: 'md:max-w-2xl flex flex-col gap-6'
 }
 
 const App: React.FC = () => {
@@ -31,18 +31,18 @@ const App: React.FC = () => {
         <GlobalContext.Provider value={{ globalState: globalState, dispatch: globalDispatch }}>
             <LantanaContext.Provider value={{ lantanaState: lantanaState, dispatch: lantanaDispatch }}>
                 <ColorBrewerContext.Provider value={{ colorBrewerState: colorBrewerState, dispatch: colorBrewerDispatch }}>
-                    <CubehelixContext.Provider value={{ cubehelixState: cubehelixState, dispatch: cubehelixDispatch}}>
+                    <CubehelixContext.Provider value={{ cubehelixState: cubehelixState, dispatch: cubehelixDispatch }}>
                         <div className={style.root}>
                             <Header />
 
                             <div className={style.content}>
+                                <Palette />
+
                                 <div className={style.settings}>
                                     {globalState.currentSettings === SettingsName.Lantana && <Lantana />}
                                     {globalState.currentSettings === SettingsName.ColorBrewer && <ColorBrewer />}
                                     {globalState.currentSettings === SettingsName.Cubehelix && <Cubehelix />}
                                 </div>
-
-                                <Palette />
                             </div>
 
                             <Footer />

@@ -28,7 +28,7 @@ module.exports = {
                 'spacing': 'margin, padding',
             },
             animation: {
-                'bounce-1': 'bounce 450ms ease-in-out 1',
+                'bounce-1': 'bounce 350ms ease-in-out 1',
             },
             keyframes: {
                 bounce: {
@@ -38,7 +38,7 @@ module.exports = {
                     },
 
                     '50%': {
-                        transform: 'translateY(-20%)',
+                        transform: 'translateY(-15%)',
                         animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
                     },
                 },
@@ -58,7 +58,9 @@ module.exports = {
             visibility: ['hover', 'group-hover', 'group-focus'],
             flexGrow: ['hover'],
             display: ['hover', 'group-hover'],
-            height: ['hover', 'group-hover']
+            width: ['hover', 'group-hover'],
+            maxWidth: ['hover', 'group-hover'],
+            flexGrow: ['hover', 'group-hover']
         },
     },
     plugins: [],
