@@ -18,7 +18,6 @@ import Cubehelix from './settings/Cubehelix'
 const style = {
     root: 'max-w-screen-xl min-h-full m-auto flex flex-col content-stretch',
     content: 'flex flex-1 flex-col p-3 gap-6',
-    settings: 'md:max-w-2xl flex flex-col gap-6'
 }
 
 const App: React.FC = () => {
@@ -38,11 +37,9 @@ const App: React.FC = () => {
                             <div className={style.content}>
                                 <Palette />
 
-                                <div className={style.settings}>
-                                    {globalState.currentSettings === SettingsName.Lantana && <Lantana />}
-                                    {globalState.currentSettings === SettingsName.ColorBrewer && <ColorBrewer />}
-                                    {globalState.currentSettings === SettingsName.Cubehelix && <Cubehelix />}
-                                </div>
+                                {globalState.currentSettings === SettingsName.Lantana && <Lantana />}
+                                {globalState.currentSettings === SettingsName.ColorBrewer && <ColorBrewer />}
+                                {globalState.currentSettings === SettingsName.Cubehelix && <Cubehelix />}
                             </div>
 
                             <Footer />

@@ -12,7 +12,7 @@ export interface LargeControlProps {
 }
 
 const style = {
-    control: 'flex flex-col gap-1',
+    control: 'flex flex-1 flex-col gap-1',
     label: 'flex-grow select-none mr-2',
     numberInput: 'text-right'
 }
