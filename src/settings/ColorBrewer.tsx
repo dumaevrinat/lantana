@@ -34,22 +34,42 @@ const ColorBrewer: React.FC = () => {
     }
 
     return (
-        <>
-            <SettingsItem label='nature of data'>
-                {groupNames.map(groupName =>
-                    <Radio
-                        key={groupName}
-                        id={groupName}
-                        value={groupName}
-                        checked={selectGroupName(colorBrewerState) === groupName}
-                        onChange={handleChangeGroupName}
-                    >
-                        {groupName}
-                    </Radio>
-                )}
-            </SettingsItem>
+        <div className='grid md:grid-cols-7 gap-4'>
+            <div className='grid sm:grid-cols-5 md:grid-cols-1 md:col-span-3 gap-4'>
+                <SettingsItem
+                    label='nature of data'
+                    className={{ card: 'sm:col-span-3 md:col-span-1' }}
+                >
+                    {groupNames.map(groupName =>
+                        <Radio
+                            key={groupName}
+                            id={groupName}
+                            value={groupName}
+                            checked={selectGroupName(colorBrewerState) === groupName}
+                            onChange={handleChangeGroupName}
+                        >
+                            {groupName}
+                        </Radio>
+                    )}
+                </SettingsItem>
 
-            <SettingsItem label='color scheme'>
+                <SettingsItem
+                    label='number of colors'
+                    className={{ card: 'sm:col-span-2 md:col-span-1' }}
+                >
+                    <NumberInput
+                        className={{ input: 'text-3xl' }}
+                        value={selectPaletteSize(colorBrewerState)}
+                        minValue={0}
+                        maxValue={30}
+                        step={1}
+                        precision={0}
+                        onChange={handleChangePaletteSize}
+                    />
+                </SettingsItem>
+            </div>
+
+            <SettingsItem label='color scheme' className={{ card: 'md:col-span-4' }}>
                 {colorBrewerGroups[selectGroupName(colorBrewerState)].map(paletteName =>
                     <Radio
                         key={paletteName}
@@ -62,18 +82,7 @@ const ColorBrewer: React.FC = () => {
                     </Radio>
                 )}
             </SettingsItem>
-
-            <SettingsItem label='number of colors'>
-                <NumberInput
-                    value={selectPaletteSize(colorBrewerState)}
-                    minValue={0}
-                    maxValue={30}
-                    step={1}
-                    precision={0}
-                    onChange={handleChangePaletteSize}
-                />
-            </SettingsItem>
-        </>
+        </div>
     )
 }
 

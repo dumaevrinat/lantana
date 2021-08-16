@@ -29,6 +29,7 @@ module.exports = {
             },
             animation: {
                 'bounce-1': 'bounce 350ms ease-in-out 1',
+                'fadein': 'fadein 350ms ease-out 1'
             },
             keyframes: {
                 bounce: {
@@ -42,6 +43,16 @@ module.exports = {
                         animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
                     },
                 },
+                fadein: {
+                    '0%': {
+                        opacity: '0',
+                        animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+                    },
+                    '90%': {
+                        opacity: '1',
+                        animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+                    }
+                }
 
             }
         },

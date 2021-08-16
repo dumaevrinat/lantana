@@ -8,10 +8,6 @@ import Radio from '../components/radio'
 import NumberInput from '../components/number-input'
 import SettingsItem from '../components/settings-item'
 
-const style = {
-    colorPickers: 'flex flex-col sm:flex-row gap-6',
-}
-
 const Lantana: React.FC = () => {
     const { lantanaState, dispatch } = useContext(LantanaContext)
 
@@ -39,18 +35,16 @@ const Lantana: React.FC = () => {
     }
 
     return (
-        <>
-            <div className={style.colorPickers}>
-                {pickers.map(picker =>
-                    <ColorPicker
-                        key={picker.id}
-                        color={picker.color}
-                        onChangeColor={handleChangeColor(picker.id)}
-                    />
-                )}
-            </div>
+        <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+            {pickers.map(picker =>
+                <ColorPicker
+                    key={picker.id}
+                    color={picker.color}
+                    onChangeColor={handleChangeColor(picker.id)}
+                />
+            )}
 
-            <div className='flex flex-col gap-6'>
+            <div className='grid sm:grid-cols-2 lg:grid-cols-1 sm:col-span-2 lg:col-span-2 gap-4'>
                 <SettingsItem label='interpolation mode'>
                     {modes.map(mode =>
                         <Radio
@@ -65,29 +59,33 @@ const Lantana: React.FC = () => {
                     )}
                 </SettingsItem>
 
-                <SettingsItem label='number of colors'>
-                    <NumberInput
-                        value={selectPaletteSize(lantanaState)}
-                        minValue={0}
-                        maxValue={30}
-                        step={1}
-                        precision={0}
-                        onChange={handleChangePaletteSize}
-                    />
-                </SettingsItem>
+                <div className='grid md:grid-cols-2 gap-4'>
+                    <SettingsItem label='number of colors'>
+                        <NumberInput
+                            className={{ input: 'text-3xl' }}
+                            value={selectPaletteSize(lantanaState)}
+                            minValue={0}
+                            maxValue={30}
+                            step={1}
+                            precision={0}
+                            onChange={handleChangePaletteSize}
+                        />
+                    </SettingsItem>
 
-                <SettingsItem label='center shift'>
-                    <NumberInput
-                        value={selectGamma(lantanaState)}
-                        minValue={0}
-                        maxValue={5}
-                        step={0.1}
-                        precision={1}
-                        onChange={handleChangeGamma}
-                    />
-                </SettingsItem>
+                    <SettingsItem label='center shift'>
+                        <NumberInput
+                            className={{ input: 'text-3xl' }}
+                            value={selectGamma(lantanaState)}
+                            minValue={0}
+                            maxValue={5}
+                            step={0.1}
+                            precision={1}
+                            onChange={handleChangeGamma}
+                        />
+                    </SettingsItem>
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 

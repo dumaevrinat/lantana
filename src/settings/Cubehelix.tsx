@@ -5,10 +5,8 @@ import SettingsItem from '../components/settings-item'
 import NumberInput from '../components/number-input'
 import { selectDark, selectGamma, selectLight, selectPaletteSize, selectRotations, selectStart } from '../state/cubehelix/selectors'
 import LargeControl from '../components/large-control'
-import Card from '../components/card'
 
 const style = {
-    row: 'flex flex-col md:flex-row gap-6',
     basicSettings: 'flex flex-col gap-5 sm:gap-6 pb-6'
 }
 
@@ -40,8 +38,8 @@ const Cubehelix: React.FC = () => {
     }
 
     return (
-        <>
-            <Card className={style.basicSettings}>
+        <div className='grid sm:grid-cols-2 gap-4'>
+            <SettingsItem className={{content: style.basicSettings}}>
                 <LargeControl
                     title='start'
                     value={selectStart(cubehelixState)}
@@ -71,45 +69,48 @@ const Cubehelix: React.FC = () => {
                     precision={2}
                     onChange={handleChangeGamma}
                 />
-            </Card>
-
-            <div className={style.row}>
-                <Card className='flex-1 min-w-min'>
-                    <LargeControl
-                        title='dark'
-                        value={selectDark(cubehelixState)}
-                        minValue={0}
-                        maxValue={1}
-                        step={0.01}
-                        precision={2}
-                        onChange={handleChangeDark}
-                    />
-                </Card>
-
-                <Card className='flex-1 min-w-min'>
-                    <LargeControl
-                        title='light'
-                        value={selectLight(cubehelixState)}
-                        minValue={0}
-                        maxValue={1}
-                        step={0.01}
-                        precision={2}
-                        onChange={handleChangeLight}
-                    />
-                </Card>
-            </div>
-
-            <SettingsItem label='number of colors'>
-                <NumberInput
-                    value={selectPaletteSize(cubehelixState)}
-                    minValue={0}
-                    maxValue={30}
-                    step={1}
-                    precision={0}
-                    onChange={handleChangePaletteSize}
-                />
             </SettingsItem>
-        </>
+
+            <div className='grid gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                    <SettingsItem>
+                        <LargeControl
+                            title='dark'
+                            value={selectDark(cubehelixState)}
+                            minValue={0}
+                            maxValue={1}
+                            step={0.01}
+                            precision={2}
+                            onChange={handleChangeDark}
+                        />
+                    </SettingsItem>
+
+                    <SettingsItem>
+                        <LargeControl
+                            title='light'
+                            value={selectLight(cubehelixState)}
+                            minValue={0}
+                            maxValue={1}
+                            step={0.01}
+                            precision={2}
+                            onChange={handleChangeLight}
+                        />
+                    </SettingsItem>
+                </div>
+
+                <SettingsItem label='number of colors'>
+                    <NumberInput
+                        className={{ input: 'text-3xl' }}
+                        value={selectPaletteSize(cubehelixState)}
+                        minValue={0}
+                        maxValue={30}
+                        step={1}
+                        precision={0}
+                        onChange={handleChangePaletteSize}
+                    />
+                </SettingsItem>
+            </div>
+        </div>
     )
 }
 

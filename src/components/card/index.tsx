@@ -7,7 +7,7 @@ export interface CardProps {
 }
 
 const style = {
-    card: 'border-2 border-gray-100 rounded-3xl p-4',
+    card: 'border-2 border-gray-100 rounded-3xl p-4 animate-fadein',
 }
 
 const Card: React.FC<CardProps> = ({ className, children }) => {
