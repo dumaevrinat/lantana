@@ -44,9 +44,9 @@ export interface GlobalState {
 }
 
 export enum SettingsName {
-    Lantana = 'Lantana',
-    ColorBrewer = 'ColorBrewer',
-    Cubehelix = 'Cubehelix'
+    Lantana = 'lantana',
+    ColorBrewer = 'colorbrewer',
+    Cubehelix = 'cubehelix'
 }
 
 export type ColorBrewerGroupName = 'diverging' | 'qualitative' | 'sequential'

@@ -4,12 +4,6 @@ import copy from 'copy-to-clipboard'
 import React, { useState } from 'react'
 import { isLightColor } from '../../utils/color'
 
-interface CopyColorValueProps {
-    value: string
-    label: string
-    className?: string
-}
-
 export interface PaletteColorProps {
     color: Color
 }

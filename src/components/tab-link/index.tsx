@@ -7,15 +7,15 @@ import { SettingsName } from '../../types'
 import Radio from '../radio'
 
 export interface TabLinkProps {
-    description?: string
     settings: SettingsName
+    description?: string
     children: React.ReactNode
 }
 
 const style = {
-    tabLink: 'flex flex-col items-center px-3 scroll-snap-align-start transition-all',
+    tabLink: 'flex flex-col items-center max-w-min px-3 scroll-snap-align-start transition-all',
     radioLabel: 'flex flex-nowrap items-center justify-center min-w-max text-3xl sm:text-4xl',
-    description: 'text-base text-center cursor-default',
+    description: 'px-4 break-normal text-base cursor-default',
 }
 
 const TabLink: React.FC<TabLinkProps> = ({ description, settings, children }) => {
@@ -42,9 +42,9 @@ const TabLink: React.FC<TabLinkProps> = ({ description, settings, children }) =>
             </Radio>
 
             {description &&
-                <span className={clsx(style.description, !checked && 'invisible')}>
+                <div className={clsx(style.description, !checked && 'invisible')}>
                     {description}
-                </span>
+                </div>
             }
         </div>
     )
