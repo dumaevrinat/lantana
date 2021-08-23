@@ -16,6 +16,12 @@ const style = {
     controls: 'flex flex-col gap-5 sm:gap-6 w-full'
 }
 
+const generateGradientByColor = (color: Color, modechan: string, length: number, step: number) => {
+    return Array
+        .from(Array(length).keys())
+        .map(item => color.set(modechan, item * step).css())
+}
+
 const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
     const [h, s, l] = colorToPercentageHsl(color)
 
@@ -42,7 +48,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
 
     const handleChangeHue = (newHue: number) => {
         setHue(newHue)
-        
+
         const newColor = percentageHslToColor(newHue, saturation, lightness)
         setHex(newColor.hex().substring(1))
         onChangeColor(newColor)
@@ -64,6 +70,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
         onChangeColor(newColor)
     }
 
+    const hueGradient = generateGradientByColor(color, 'hsl.h', 9, 45)
+    const saturationGradient = generateGradientByColor(color, 'hsl.s', 10, 0.1)
+    const lightnessGradient = generateGradientByColor(color, 'hsl.l', 10, 0.1)
 
     return (
         <Card className={style.card}>
@@ -85,6 +94,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     step={1}
                     precision={0}
                     onChange={handleChangeHue}
+                    rangeInputProps={{ style: { background: `linear-gradient(to right, ${hueGradient.toString()})` } }}
                 />
                 <LargeControl
                     title='saturation'
@@ -94,6 +104,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     step={1}
                     precision={0}
                     onChange={handleChangeSaturation}
+                    rangeInputProps={{ style: { background: `linear-gradient(to right, ${saturationGradient.toString()})` } }}
                 />
                 <LargeControl
                     title='lightness'
@@ -103,6 +114,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     step={1}
                     precision={0}
                     onChange={handleChangeLightness}
+                    rangeInputProps={{ style: { background: `linear-gradient(to right, ${lightnessGradient.toString()})` } }}
                 />
             </div>
         </Card>

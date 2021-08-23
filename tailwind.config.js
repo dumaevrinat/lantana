@@ -67,7 +67,6 @@ module.exports = {
             borderColor: ['active'],
             borderWidth: ['hover'],
             visibility: ['hover', 'group-hover', 'group-focus'],
-            flexGrow: ['hover'],
             display: ['hover', 'group-hover'],
             width: ['hover', 'group-hover'],
             maxWidth: ['hover', 'group-hover'],

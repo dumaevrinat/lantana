@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, InputHTMLAttributes } from 'react'
 import NumberInput from '../number-input'
 
 export interface LargeControlProps {
@@ -9,15 +9,16 @@ export interface LargeControlProps {
     step: number
     precision: number
     onChange: (value: number) => void
+    rangeInputProps?: InputHTMLAttributes<HTMLInputElement>
 }
 
 const style = {
     control: 'flex flex-1 flex-col gap-1',
     label: 'flex-grow select-none mr-2',
-    numberInput: 'text-right'
+    numberInput: 'text-right w-20'
 }
 
-const LargeControl: React.FC<LargeControlProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
+const LargeControl: React.FC<LargeControlProps> = ({ title, value, minValue, maxValue, step, precision, onChange, rangeInputProps }) => {
     const handleChangeRangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         const parsedValue = parseFloat(e.target.value)
 
@@ -47,6 +48,7 @@ const LargeControl: React.FC<LargeControlProps> = ({ title, value, minValue, max
                 max={maxValue}
                 step={step}
                 onChange={handleChangeRangeInput}
+                {...rangeInputProps}
             />
         </div>
     )
