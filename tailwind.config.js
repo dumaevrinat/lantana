@@ -9,9 +9,10 @@ module.exports = {
     darkMode: false,
     theme: {
         colors: {
-            black: '#121212',
+            transparent: 'transparent',
+            black: '#000',
             white: '#FFFFFF',
-            gray: colors.trueGray
+            gray: {...colors.coolGray}
         },
         extend: {
             borderColor: {

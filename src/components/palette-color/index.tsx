@@ -9,7 +9,7 @@ export interface PaletteColorProps {
 }
 
 const style = {
-    paletteColor: 'group flex flex-grow items-stretch flex-basis-1 hover:flex-basis-44 h-44 overflow-hidden tap-highlight-transparent cursor-pointer animate-fadein transition-all ease-in-out',
+    paletteColor: 'group flex flex-grow items-stretch flex-basis-1 hover:flex-basis-44 h-44 overflow-hidden tap-highlight-transparent cursor-pointer transition-all ease-in-out',
     content: 'flex flex-grow justify-center items-center opacity-0 group-hover:opacity-100 transition-all ease-in-out select-none',
     label: 'font-bold md:text-2xl'
 }
