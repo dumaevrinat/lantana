@@ -3,7 +3,7 @@ import PaletteColor from '../palette-color'
 import { usePaletteColors } from '../../hooks/use-palette-colors'
 
 const style = {
-    palette: 'flex w-full overflow-hidden rounded-3xl'
+    palette: 'flex w-full overflow-hidden rounded-3xl animate-fadein'
 }
 
 const Palette: React.FC = () => {

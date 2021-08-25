@@ -9,19 +9,17 @@ module.exports = {
     darkMode: false,
     theme: {
         colors: {
-            black: '#121212',
-            white: '#FFFFFF',
-            gray: colors.trueGray
+            transparent: 'transparent',
+            black: colors.gray[900],
+            white: colors.white,
+            gray: {...colors.gray}
         },
         extend: {
             borderColor: {
-                DEFAULT: '#121212'
+                DEFAULT: colors.gray[900]
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
-            },
-            gridTemplateColumns: {
-                'auto': 'auto auto'
             },
             transitionProperty: {
                 'height': 'height',

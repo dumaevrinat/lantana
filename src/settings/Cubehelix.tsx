@@ -7,7 +7,7 @@ import { selectDark, selectGamma, selectLight, selectPaletteSize, selectRotation
 import LargeControl from '../components/large-control'
 
 const style = {
-    basicSettings: 'flex flex-col gap-5 sm:gap-6 pb-6'
+    basicSettings: 'flex-1 flex-col justify-between'
 }
 
 const Cubehelix: React.FC = () => {

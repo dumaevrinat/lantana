@@ -2,6 +2,10 @@ import React, { useContext } from 'react'
 import { LantanaContext } from '../../state/lantana/context'
 import { selectColorsFromColorPickers } from '../../state/lantana/selectors'
 
+const style = {
+    'logo': 'text-3xl sm:text-4xl'
+}
+
 const LantanaLogo: React.FC = () => {
     const { lantanaState } = useContext(LantanaContext)
 
@@ -9,12 +13,21 @@ const LantanaLogo: React.FC = () => {
 
     return (
         <>
-            <span>lantana</span>
+            <span className={style.logo}>lantana</span>
 
             {colors.map((color, index) =>
                 <div key={index} className='flex items-center'>
-                    <span style={{ color: color.hex() }}>•</span>
-                    {index + 1 !== colors.length && <span>{'->'}</span>}
+                    <span
+                        className={style.logo}
+                        style={{ color: color.hex() }}
+                    >
+                        •
+                    </span>
+                    {index + 1 !== colors.length &&
+                        <span className={style.logo}>
+                            {'->'}
+                        </span>
+                    }
                 </div>
             )}
         </>

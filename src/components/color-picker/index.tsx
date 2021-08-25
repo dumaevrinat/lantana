@@ -10,10 +10,10 @@ export interface ColorPickerProps {
 }
 
 const style = {
-    card: 'min-w-min pb-6',
-    title: 'text-black transition-all ease-in-out mb-4',
+    card: 'flex flex-col min-w-min pb-6',
+    title: 'transition-all ease-in-out mb-4',
     titleInput: 'uppercase text-3xl font-semibold',
-    controls: 'flex flex-col gap-5 sm:gap-6 w-full'
+    controls: 'flex flex-1 flex-col justify-between gap-5 sm:gap-6'
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
@@ -42,7 +42,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
 
     const handleChangeHue = (newHue: number) => {
         setHue(newHue)
-        
+
         const newColor = percentageHslToColor(newHue, saturation, lightness)
         setHex(newColor.hex().substring(1))
         onChangeColor(newColor)

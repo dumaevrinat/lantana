@@ -13,7 +13,7 @@ export interface LargeControlProps {
 
 const style = {
     control: 'flex flex-1 flex-col gap-1',
-    label: 'flex-grow select-none mr-2',
+    label: 'select-none mr-2',
     numberInput: 'text-right'
 }
 
@@ -26,7 +26,7 @@ const LargeControl: React.FC<LargeControlProps> = ({ title, value, minValue, max
 
     return (
         <div className={style.control}>
-            <div className='flex'>
+            <div className='flex justify-between'>
                 <label className={style.label}>
                     {title}
                 </label>
