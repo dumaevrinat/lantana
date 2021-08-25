@@ -16,8 +16,8 @@ import Palette from './components/palette'
 import Cubehelix from './settings/Cubehelix'
 
 const style = {
-    root: 'max-w-screen-xl min-h-full m-auto flex flex-col content-stretch',
-    content: 'flex flex-1 flex-col p-3 gap-6',
+    root: 'max-w-screen-xl min-h-full m-auto flex flex-col content-stretch gap-6',
+    content: 'flex flex-1 flex-col gap-6 px-3 sm:px-6',
 }
 
 const App: React.FC = () => {

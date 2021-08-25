@@ -15,7 +15,7 @@ export interface SettingsItemProps {
 }
 
 const style = {
-    card: 'flex flex-col justify-start gap-2',
+    card: 'flex flex-col justify-start gap-4',
     label: '',
     content: 'flex flex-wrap gap-2'
 }
