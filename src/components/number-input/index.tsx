@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState, WheelEvent } from 'react'
+import { ChangeEvent, FC, useEffect, useState, WheelEvent } from 'react'
 import { toPrecision } from '../../utils/number'
 
 interface ClassNameProps {
@@ -15,7 +15,9 @@ export interface NumberInputProps {
     onChange: (value: number) => void
 }
 
-const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, maxValue, step, precision, onChange }) => {
+const NumberInput: FC<NumberInputProps> = (props: NumberInputProps) => {
+    const { className, value, minValue, maxValue, step, precision, onChange } = props
+
     const [inputValue, setInputValue] = useState<string>(value.toString())
     const [focus, setFocus] = useState<boolean>(false)
 

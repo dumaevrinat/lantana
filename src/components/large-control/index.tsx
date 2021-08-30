@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import { ChangeEvent, FC } from 'react'
 import NumberInput from '../number-input'
 
 export interface LargeControlProps {
@@ -17,7 +17,9 @@ const style = {
     numberInput: 'text-right'
 }
 
-const LargeControl: React.FC<LargeControlProps> = ({ title, value, minValue, maxValue, step, precision, onChange }) => {
+const LargeControl: FC<LargeControlProps> = (props: LargeControlProps) => {
+    const { title, value, minValue, maxValue, step, precision, onChange } = props
+
     const handleChangeRangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         const parsedValue = parseFloat(e.target.value)
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import PaletteColor from '../palette-color'
 import { usePaletteColors } from '../../hooks/use-palette-colors'
 
@@ -6,7 +6,7 @@ const style = {
     palette: 'flex w-full overflow-hidden rounded-3xl animate-fadein'
 }
 
-const Palette: React.FC = () => {
+const Palette: FC = () => {
     const paletteColors = usePaletteColors()
 
     return (

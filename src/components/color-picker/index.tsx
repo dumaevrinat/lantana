@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import chroma, { Color } from 'chroma-js'
 import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../../utils/color'
 import LargeControl from '../large-control'
@@ -16,7 +16,9 @@ const style = {
     controls: 'flex flex-1 flex-col justify-between gap-5 sm:gap-6'
 }
 
-const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
+const ColorPicker: FC<ColorPickerProps> = (props: ColorPickerProps) => {
+    const { color, onChangeColor } = props
+
     const [h, s, l] = colorToPercentageHsl(color)
 
     const [hex, setHex] = useState<string>(color.hex().substring(1))

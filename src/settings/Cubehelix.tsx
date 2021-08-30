@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import { CubehelixContext } from '../state/cubehelix/context'
 import { setDark, setGamma, setLight, setPaletteSize, setRotations, setStart } from '../state/cubehelix/actions'
 import SettingsItem from '../components/settings-item'
@@ -10,7 +10,7 @@ const style = {
     basicSettings: 'flex-1 flex-col justify-between'
 }
 
-const Cubehelix: React.FC = () => {
+const Cubehelix: FC = () => {
     const { cubehelixState, dispatch } = useContext(CubehelixContext)
 
     const handleChangePaletteSize = (size: number) => {

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext } from 'react'
+import { ChangeEvent, FC, useContext } from 'react'
 import { LantanaContext } from '../state/lantana/context'
 import { selectColorPickers, selectGamma, selectPaletteMode, selectPaletteSize } from '../state/lantana/selectors'
 import { setGamma, setPaletteMode, setPaletteSize, updateColorPicker } from '../state/lantana/actions'
@@ -8,7 +8,7 @@ import Radio from '../components/radio'
 import NumberInput from '../components/number-input'
 import SettingsItem from '../components/settings-item'
 
-const Lantana: React.FC = () => {
+const Lantana: FC = () => {
     const { lantanaState, dispatch } = useContext(LantanaContext)
 
     const modes: Array<InterpolationMode> = ['rgb', 'lrgb', 'hsl', 'hcl', 'hsi', 'lab', 'lch']

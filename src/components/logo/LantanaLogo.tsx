@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { FC, useContext } from 'react'
 import { LantanaContext } from '../../state/lantana/context'
 import { selectColorsFromColorPickers } from '../../state/lantana/selectors'
 
@@ -6,7 +6,7 @@ const style = {
     'logo': 'text-3xl sm:text-4xl'
 }
 
-const LantanaLogo: React.FC = () => {
+const LantanaLogo: FC = () => {
     const { lantanaState } = useContext(LantanaContext)
 
     const colors = selectColorsFromColorPickers(lantanaState)

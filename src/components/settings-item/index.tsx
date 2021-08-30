@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { FC } from 'react'
 import Card from '../card'
 
 export interface ClassNameProps {
@@ -20,7 +20,9 @@ const style = {
     content: 'flex flex-wrap gap-2'
 }
 
-const SettingsItem: React.FC<SettingsItemProps> = ({ label, children, className }) => {
+const SettingsItem: FC<SettingsItemProps> = (props: SettingsItemProps) => {
+    const { label, children, className } = props
+
     return (
         <Card className={clsx(style.card, className?.card)}>
             {label &&

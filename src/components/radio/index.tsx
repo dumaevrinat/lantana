@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { FC } from 'react'
 
 interface ClassNameProps {
     radio?: string
@@ -20,9 +20,11 @@ const style = {
     label: ''
 }
 
-const Radio: React.FC<RadioProps> = ({ id, className, children, value, checked, onChange }) => {
+const Radio: FC<RadioProps> = (props: RadioProps) => {
+    const { id, className, children, value, checked, onChange } = props
+
     return (
-        <div className={clsx(style.radio, className?.radio)}>
+        <>
             <input
                 id={id}
                 type='radio'
@@ -36,7 +38,7 @@ const Radio: React.FC<RadioProps> = ({ id, className, children, value, checked, 
             >
                 {children ? children : value}
             </label>
-        </div>
+        </>
     )
 }
 

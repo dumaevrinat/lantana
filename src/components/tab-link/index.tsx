@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { ChangeEvent, useContext } from 'react'
+import React, { ChangeEvent, FC, useContext } from 'react'
 import { setCurrentSettings } from '../../state/global/actions'
 import { GlobalContext } from '../../state/global/context'
 import { selectCurrentSettings } from '../../state/global/selectors'
@@ -15,7 +15,9 @@ const style = {
     radioLabel: 'flex flex-nowrap items-center justify-center min-w-max text-3xl sm:text-4xl',
 }
 
-const TabLink: React.FC<TabLinkProps> = ({ settings, children }) => {
+const TabLink: FC<TabLinkProps> = (props: TabLinkProps) => {
+    const { settings, children } = props
+
     const { globalState, dispatch } = useContext(GlobalContext)
 
     const checked = selectCurrentSettings(globalState) === settings

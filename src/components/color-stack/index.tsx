@@ -1,5 +1,5 @@
 import { Color } from 'chroma-js'
-import React from 'react'
+import { FC } from 'react'
 
 export interface ColorStackProps {
     colors: Color[]
@@ -10,7 +10,9 @@ const style = {
     color: 'w-5 h-5 rounded-full -ml-2'
 }
 
-const ColorStack: React.FC<ColorStackProps> = ({ colors }) => {
+const ColorStack: FC<ColorStackProps> = (props: ColorStackProps) => {
+    const { colors } = props
+
     return (
         <div className={style.stack}>
             {colors.map((color, index) =>

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import copy from 'copy-to-clipboard'
 import { usePaletteColors } from '../../hooks/use-palette-colors'
 import { SettingsName } from '../../types'
@@ -14,7 +14,7 @@ const style = {
     actionsButtonSpan: 'material-icons align-middle md-18 material-icons-round'
 }
 
-const Header: React.FC = () => {
+const Header: FC = () => {
     const paletteColors = usePaletteColors()
 
     const handleClickCopyJsonArray = () => {

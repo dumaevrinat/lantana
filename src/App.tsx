@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import { FC, useReducer } from 'react'
 import Footer from './components/footer'
 import Header from './components/header'
 import { initialState as lantanaInitialState, lantanaReducer } from './state/lantana/reducer'
@@ -20,7 +20,7 @@ const style = {
     content: 'flex flex-1 flex-col gap-6 px-3 sm:px-6',
 }
 
-const App: React.FC = () => {
+const App: FC = () => {
     const [lantanaState, lantanaDispatch] = useReducer(lantanaReducer, lantanaInitialState)
     const [colorBrewerState, colorBrewerDispatch] = useReducer(colorBrewerReducer, colorBrewerInitialState)
     const [cubehelixState, cubehelixDispatch] = useReducer(cubehelixReducer, cubehelixInitialState)

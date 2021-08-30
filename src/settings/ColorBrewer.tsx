@@ -1,6 +1,6 @@
 import chroma from 'chroma-js'
 import { brewer } from 'chroma-js'
-import React, { ChangeEvent, useContext } from 'react'
+import { ChangeEvent, FC, useContext } from 'react'
 import ColorStack from '../components/color-stack'
 import NumberInput from '../components/number-input'
 import Radio from '../components/radio'
@@ -11,7 +11,7 @@ import { selectGroupName, selectPaletteName, selectPaletteSize } from '../state/
 import { ColorBrewerGroupName } from '../types'
 import { colorBrewerGroups } from '../utils/color-brewer-groups'
 
-const ColorBrewer: React.FC = () => {
+const ColorBrewer: FC = () => {
     const { colorBrewerState, dispatch } = useContext(ColorBrewerContext)
 
     const groupNames: Array<ColorBrewerGroupName> = ['sequential', 'diverging', 'qualitative']

@@ -1,7 +1,7 @@
 import { Color } from 'chroma-js'
 import clsx from 'clsx'
 import copy from 'copy-to-clipboard'
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 import { isLightColor } from '../../utils/color'
 
 export interface PaletteColorProps {
@@ -14,7 +14,9 @@ const style = {
     label: 'font-bold md:text-2xl'
 }
 
-const PaletteColor: React.FC<PaletteColorProps> = ({ color }) => {
+const PaletteColor: FC<PaletteColorProps> = (props: PaletteColorProps) => {
+    const { color } = props
+
     const label = color.hex().substring(1).toUpperCase()
 
     const [isCopied, setIsCopied] = useState(false)
