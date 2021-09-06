@@ -1,0 +1,4 @@
+.input {
+    @apply border-none outline-none appearance-none tap-highlight-transparent;
+    @apply bg-transparent text-lg sm:text-xl text-black placeholder-gray-400;
+}

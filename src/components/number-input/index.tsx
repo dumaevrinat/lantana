@@ -1,21 +1,22 @@
-import { ChangeEvent, useEffect, useState, WheelEvent } from 'react'
+import clsx from 'clsx'
+import { ChangeEvent, FC, InputHTMLAttributes, useEffect, useState, WheelEvent } from 'react'
 import { toPrecision } from '../../utils/number'
+import Input from '../input'
+import './number-input.css'
 
-interface ClassNameProps {
-    input?: string
-}
-
-export interface NumberInputProps {
-    className?: ClassNameProps
+export interface NumberInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    large?: boolean
     value: number
-    minValue: number
-    maxValue: number
+    min: number
+    max: number
     step: number
     precision: number
-    onChange: (value: number) => void
+    onChangeValue: (value: number) => void
 }
 
-const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, maxValue, step, precision, onChange }) => {
+const NumberInput: FC<NumberInputProps> = (props: NumberInputProps) => {
+    const { className, large = false, value, min, max, step, precision, onChangeValue, ...restProps } = props
+
     const [inputValue, setInputValue] = useState<string>(value.toString())
     const [focus, setFocus] = useState<boolean>(false)
 
@@ -25,16 +26,16 @@ const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, m
 
     const setParsedValue = (parsedValue: number) => {
         if (!isNaN(parsedValue)) {
-            if (parsedValue > maxValue) {
-                onChange(maxValue)
+            if (parsedValue > max) {
+                onChangeValue(max)
             }
 
-            if (parsedValue < minValue) {
-                onChange(minValue)
+            if (parsedValue < min) {
+                onChangeValue(min)
             }
 
-            if (parsedValue >= minValue && parsedValue <= maxValue) {
-                onChange(parsedValue)
+            if (parsedValue >= min && parsedValue <= max) {
+                onChangeValue(parsedValue)
             }
         } else {
             setInputValue('')
@@ -71,11 +72,12 @@ const NumberInput: React.FC<NumberInputProps> = ({ className, value, minValue, m
 
 
     return (
-        <input
-            className={className?.input}
+        <Input
+            {...restProps}
+            className={clsx('number-input', large && 'number-input--lg', className)}
             type='number'
-            min={minValue}
-            max={maxValue}
+            min={min}
+            max={max}
             step={step}
             size={1}
             value={inputValue}

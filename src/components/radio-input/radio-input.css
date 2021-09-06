@@ -1,0 +1,13 @@
+.radio-input {
+    @apply absolute hidden;
+}
+
+.radio-label {
+    @apply cursor-pointer select-none tap-highlight-transparent;
+    @apply py-1 px-3.5 rounded-3xl transition-all;
+    @apply border-2 border-transparent hover:border-gray-300 focus:border-black active:border-black;
+}
+
+.radio-input:checked + .radio-label {
+    @apply border-black;
+}

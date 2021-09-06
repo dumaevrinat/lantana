@@ -1,22 +1,20 @@
 import { Color } from 'chroma-js'
-import React from 'react'
+import { FC } from 'react'
+import './color-stack.css'
 
 export interface ColorStackProps {
     colors: Color[]
 }
 
-const style = {
-    stack: 'flex items-center py-1 px-0.5 box-content first:ml-1.0 last:-mr-2',
-    color: 'w-5 h-5 rounded-full -ml-2'
-}
+const ColorStack: FC<ColorStackProps> = (props: ColorStackProps) => {
+    const { colors } = props
 
-const ColorStack: React.FC<ColorStackProps> = ({ colors }) => {
     return (
-        <div className={style.stack}>
-            {colors.map((color, index) =>
+        <div className='color-stack'>
+            {colors.map((color) =>
                 <div
                     key={color.hex()}
-                    className={style.color}
+                    className='color-stack__circle'
                     style={{ backgroundColor: color.hex() }}
                 />
             )}

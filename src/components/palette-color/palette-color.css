@@ -1,0 +1,23 @@
+.palette-color {
+    @apply flex flex-grow items-stretch flex-basis-1 hover:flex-basis-44 h-44 overflow-hidden tap-highlight-transparent cursor-pointer transition-all;
+}
+
+.palette-color__content {
+    @apply flex flex-grow justify-center items-center transform scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all select-none;
+}
+
+.palette-color__content--copied {
+    @apply scale-150 animate-bounce-1;
+}
+
+.palette-color__label {
+    @apply font-bold md:text-2xl;
+}
+
+.palette-color__label--light {
+    @apply text-white;
+}
+
+.palette-color__label--dark {
+    @apply text-black;
+}

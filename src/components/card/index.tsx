@@ -1,18 +1,17 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { FC } from 'react'
+import './card.css'
 
 export interface CardProps {
     className?: string
     children: React.ReactNode
 }
 
-const style = {
-    card: 'bg-gray-50 text-black rounded-3xl p-4 sm:p-6 animate-fadein',
-}
+const Card: FC<CardProps> = (props: CardProps) => {
+    const { className, children } = props
 
-const Card: React.FC<CardProps> = ({ className, children }) => {
     return (
-        <div className={clsx(style.card, className)}>
+        <div className={clsx('card', className)}>
             {children}
         </div>
     )

@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
     purge: [
@@ -69,8 +70,37 @@ module.exports = {
             display: ['hover', 'group-hover'],
             width: ['hover', 'group-hover'],
             maxWidth: ['hover', 'group-hover'],
-            flexGrow: ['hover', 'group-hover']
+            flexGrow: ['hover', 'group-hover'],
+            rotate: ['active', 'group-hover'],
+            translate: ['active', 'group-hover']
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(({ addUtilities }) => {
+          const newUtilities = {
+            '.tap-highlight-transparent': {
+                '-webkit-tap-highlight-color': 'transparent'
+            },
+            '.no-scrollbar': {
+                '-ms-overflow-style': 'none',
+                'scrollbar-width': 'none'
+            },
+            '.no-scrollbar::-webkit-scrollbar': {
+                display: 'none'
+            },
+            '.flex-basis-1': {
+                'flex-basis': '1px'
+            },
+            '.flex-basis-44': {
+                'flex-basis': '11rem'
+            },
+            '.content-stretch': {
+                'align-content': 'stretch'
+            }
+          }
+    
+          addUtilities(newUtilities, ['responsive', 'hover'])
+        })
+      ]
+    
 }

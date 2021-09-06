@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import { FC, useReducer } from 'react'
 import Footer from './components/footer'
 import Header from './components/header'
 import { initialState as lantanaInitialState, lantanaReducer } from './state/lantana/reducer'
@@ -20,17 +20,17 @@ const style = {
     content: 'flex flex-1 flex-col gap-6 px-3 sm:px-6',
 }
 
-const App: React.FC = () => {
+const App: FC = () => {
     const [lantanaState, lantanaDispatch] = useReducer(lantanaReducer, lantanaInitialState)
     const [colorBrewerState, colorBrewerDispatch] = useReducer(colorBrewerReducer, colorBrewerInitialState)
     const [cubehelixState, cubehelixDispatch] = useReducer(cubehelixReducer, cubehelixInitialState)
     const [globalState, globalDispatch] = useReducer(globalReducer, globalInitialState)
 
     return (
-        <GlobalContext.Provider value={{ globalState: globalState, dispatch: globalDispatch }}>
-            <LantanaContext.Provider value={{ lantanaState: lantanaState, dispatch: lantanaDispatch }}>
-                <ColorBrewerContext.Provider value={{ colorBrewerState: colorBrewerState, dispatch: colorBrewerDispatch }}>
-                    <CubehelixContext.Provider value={{ cubehelixState: cubehelixState, dispatch: cubehelixDispatch }}>
+        <GlobalContext.Provider value={{ globalState, dispatch: globalDispatch }}>
+            <LantanaContext.Provider value={{ lantanaState, dispatch: lantanaDispatch }}>
+                <ColorBrewerContext.Provider value={{ colorBrewerState, dispatch: colorBrewerDispatch }}>
+                    <CubehelixContext.Provider value={{ cubehelixState, dispatch: cubehelixDispatch }}>
                         <div className={style.root}>
                             <Header />
 

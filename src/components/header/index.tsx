@@ -1,20 +1,13 @@
-import React from 'react'
+import { FC } from 'react'
 import copy from 'copy-to-clipboard'
 import { usePaletteColors } from '../../hooks/use-palette-colors'
 import { SettingsName } from '../../types'
 import TabLink from '../tab-link'
-import LantanaLogo from '../logo/LantanaLogo'
+import LantanaLogo from '../logo'
+import Button from '../button'
+import './header.css'
 
-const style = {
-    header: 'flex flex-nowrap items-center justify-between pt-3 sm:pt-6 gap-4 sm:gap-8 no-scrollbar overflow-x-scroll scroll-snap-x transition-all animate-fadein',
-    tabs: 'flex flex-nowrap gap-4 pl-3 sm:pl-6',
-    actions: 'flex items-center gap-4 pr-3 sm:pr-6',
-    actionsButtons: 'flex min-w-max gap-2',
-    actionsButton: 'px-2 flex items-center justify-center',
-    actionsButtonSpan: 'material-icons align-middle md-18 material-icons-round'
-}
-
-const Header: React.FC = () => {
+const Header: FC = () => {
     const paletteColors = usePaletteColors()
 
     const handleClickCopyJsonArray = () => {
@@ -26,8 +19,8 @@ const Header: React.FC = () => {
     }
 
     return (
-        <header className={style.header}>
-            <div className={style.tabs}>
+        <header className='header'>
+            <div className='header__tabs'>
                 <TabLink settings={SettingsName.Lantana}>
                     <LantanaLogo />
                 </TabLink>
@@ -41,21 +34,13 @@ const Header: React.FC = () => {
                 </TabLink>
             </div>
 
-            <div className={style.actions}>
+            <div className='header__actions'>
                 <label>
                     copy
                 </label>
-                <div className={style.actionsButtons}>
-                    <button className={style.actionsButton} onClick={handleClickCopyJsonArray} title='array'>
-                        <span className={style.actionsButtonSpan}>
-                            data_array
-                        </span>
-                    </button>
-                    <button className={style.actionsButton} onClick={handleClickCopyCssGradient} title='css gradient'>
-                        <span className={style.actionsButtonSpan}>
-                            gradient
-                        </span>
-                    </button>
+                <div className='header__actions-buttons'>
+                    <Button materialIconName='data_array' title='array' onClick={handleClickCopyJsonArray} />
+                    <Button materialIconName='gradient' title='css gradient' onClick={handleClickCopyCssGradient} />
                 </div>
             </div>
         </header>

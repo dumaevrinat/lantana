@@ -1,0 +1,3 @@
+.card-title {
+    @apply text-lg sm:text-xl;
+}

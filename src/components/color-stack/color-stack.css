@@ -1,0 +1,7 @@
+.color-stack {
+    @apply flex items-center py-1 px-0.5 box-content first:ml-1 last:-mr-2;
+}
+
+.color-stack__circle {
+    @apply w-5 h-5 rounded-full -ml-2;
+}

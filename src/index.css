@@ -2,43 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    @variants hover, group-hover {
-        .flex-basis-1 {
-            flex-basis: 1px;
-        }
-    
-        .flex-basis-44 {
-            flex-basis: 11rem;
-        }
-    }
-
-    .content-stretch {
-        align-content: stretch;
-    }
-
-    .tap-highlight-transparent {
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .scroll-snap-x {
-        scroll-snap-type: x mandatory;
-    }
-
-    .scroll-snap-align-start {
-        scroll-snap-align: start;
-    }
-}
-
 @layer base {
     html, body, #root {
         @apply h-full bg-white text-black;
@@ -46,59 +9,5 @@
 
     label, span {
         @apply text-lg sm:text-xl;
-    }
-    
-    a {
-        @apply text-lg sm:text-xl no-underline outline-none tap-highlight-transparent;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-
-    button {
-        @apply py-2 px-6 rounded-3xl outline-none appearance-none tap-highlight-transparent transition-all ease-in-out;
-        @apply hover:bg-gray-100 border-2 active:bg-gray-300;
-        @apply text-lg sm:text-xl;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-    
-    input {
-        @apply border-none outline-none appearance-none tap-highlight-transparent;
-        @apply bg-transparent text-lg sm:text-xl text-black placeholder-gray-400;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-
-    input[type='number']::-webkit-outer-spin-button,
-    input[type='number']::-webkit-inner-spin-button {
-	    @apply hidden;
-    }
-
-    input[type='range'] {
-        @apply w-full h-1 rounded-full bg-gray-100 hover:bg-gray-300 transition-all ease-in-out cursor-pointer;
-    }
-
-    input[type='range']::-webkit-slider-thumb {
-        @apply outline-none appearance-none w-2.5 h-2.5 rounded-full bg-black cursor-pointer;
-        @apply transition-all ease-in-out;
-    }
-
-    input[type='range']:hover::-webkit-slider-thumb,
-    input[type='range']:active::-webkit-slider-thumb {
-        @apply transform scale-125;
-    }
-
-    input[type='radio'] {
-        @apply absolute hidden;
-    }
-
-    input[type='radio'] + label {
-        @apply cursor-pointer select-none tap-highlight-transparent;
-        @apply py-1 px-3.5 rounded-3xl transition-all ease-in-out;
-        @apply border-2 border-transparent hover:border-gray-300 focus:border-black active:border-black;
-    }
-
-    input[type='radio']:checked + label {
-        @apply border-black;
     }
 }

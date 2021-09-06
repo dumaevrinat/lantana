@@ -1,22 +1,18 @@
-import React, { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import chroma, { Color } from 'chroma-js'
 import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../../utils/color'
 import LargeControl from '../large-control'
-import Card from '../card'
+import Input from '../input'
+import './color-picker.css'
 
 export interface ColorPickerProps {
     color: Color
     onChangeColor: (color: Color) => void
 }
 
-const style = {
-    card: 'flex flex-col min-w-min pb-6',
-    title: 'transition-all ease-in-out mb-4',
-    titleInput: 'uppercase text-3xl font-semibold',
-    controls: 'flex flex-1 flex-col justify-between gap-5 sm:gap-6'
-}
+const ColorPicker: FC<ColorPickerProps> = (props: ColorPickerProps) => {
+    const { color, onChangeColor } = props
 
-const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
     const [h, s, l] = colorToPercentageHsl(color)
 
     const [hex, setHex] = useState<string>(color.hex().substring(1))
@@ -66,17 +62,14 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
 
 
     return (
-        <Card className={style.card}>
-            <div className={style.title}>
-                <input
-                    className={style.titleInput}
-                    type='text'
+        <div className='color-picker'>
+                <Input
+                    className='color-picker__title'
                     size={6}
                     value={hex}
                     onChange={handleChangeHex}
                 />
-            </div>
-            <div className={style.controls}>
+            <div className='color-picker__controls'>
                 <LargeControl
                     title='hue'
                     value={hue}
@@ -105,7 +98,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ color, onChangeColor }) => {
                     onChange={handleChangeLightness}
                 />
             </div>
-        </Card>
+        </div>
     )
 }
 
