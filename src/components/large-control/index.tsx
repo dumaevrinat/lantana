@@ -1,5 +1,7 @@
 import { ChangeEvent, FC } from 'react'
 import NumberInput from '../number-input'
+import RangeInput from '../range-input'
+import './large-control.css'
 
 export interface LargeControlProps {
     title: string
@@ -9,12 +11,6 @@ export interface LargeControlProps {
     step: number
     precision: number
     onChange: (value: number) => void
-}
-
-const style = {
-    control: 'flex flex-1 flex-col gap-1',
-    label: 'select-none mr-2',
-    numberInput: 'text-right'
 }
 
 const LargeControl: FC<LargeControlProps> = (props: LargeControlProps) => {
@@ -27,23 +23,22 @@ const LargeControl: FC<LargeControlProps> = (props: LargeControlProps) => {
     }
 
     return (
-        <div className={style.control}>
-            <div className='flex justify-between'>
-                <label className={style.label}>
+        <div className='large-control'>
+            <div className='large-control__content'>
+                <label className='large-control__content-label'>
                     {title}
                 </label>
                 <NumberInput
-                    className={{ input: style.numberInput }}
+                    className='large-control__content-input'
                     value={value}
-                    minValue={minValue}
-                    maxValue={maxValue}
+                    min={minValue}
+                    max={maxValue}
                     step={step}
                     precision={precision}
-                    onChange={onChange}
+                    onChangeValue={onChange}
                 />
             </div>
-            <input
-                type='range'
+            <RangeInput
                 value={value}
                 min={minValue}
                 max={maxValue}

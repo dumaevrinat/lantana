@@ -1,0 +1,12 @@
+.number-input {
+
+}
+
+.number-input--lg {
+    @apply text-3xl;
+}
+
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+    @apply hidden;
+}

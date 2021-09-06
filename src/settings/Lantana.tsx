@@ -4,9 +4,11 @@ import { selectColorPickers, selectGamma, selectPaletteMode, selectPaletteSize }
 import { setGamma, setPaletteMode, setPaletteSize, updateColorPicker } from '../state/lantana/actions'
 import { Color, InterpolationMode } from 'chroma-js'
 import ColorPicker from '../components/color-picker'
-import Radio from '../components/radio'
+import Radio from '../components/radio-input'
 import NumberInput from '../components/number-input'
-import SettingsItem from '../components/settings-item'
+import Card from '../components/card'
+import CardTitle from '../components/card-title'
+import CardContent from '../components/card-content'
 
 const Lantana: FC = () => {
     const { lantanaState, dispatch } = useContext(LantanaContext)
@@ -37,52 +39,65 @@ const Lantana: FC = () => {
     return (
         <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
             {pickers.map(picker =>
-                <ColorPicker
-                    key={picker.id}
-                    color={picker.color}
-                    onChangeColor={handleChangeColor(picker.id)}
-                />
+                <Card key={picker.id}>
+                    <CardContent className='content-stretch'>
+                        <ColorPicker
+                            key={picker.id}
+                            color={picker.color}
+                            onChangeColor={handleChangeColor(picker.id)}
+                        />
+                    </CardContent>
+                </Card>
             )}
 
             <div className='grid sm:grid-cols-2 lg:grid-cols-1 sm:col-span-2 lg:col-span-2 gap-4'>
-                <SettingsItem label='interpolation mode'>
-                    {modes.map(mode =>
-                        <Radio
-                            key={mode}
-                            id={mode}
-                            value={mode}
-                            checked={selectPaletteMode(lantanaState) === mode}
-                            onChange={handleChangePaletteMode}
-                        >
-                            {mode}
-                        </Radio>
-                    )}
-                </SettingsItem>
+                <Card>
+                    <CardTitle title='interpolation mode' />
+                    <CardContent>
+                        {modes.map(mode =>
+                            <Radio
+                                key={mode}
+                                id={mode}
+                                value={mode}
+                                checked={selectPaletteMode(lantanaState) === mode}
+                                onChange={handleChangePaletteMode}
+                            >
+                                {mode}
+                            </Radio>
+                        )}
+                    </CardContent>
+                </Card>
 
                 <div className='grid md:grid-cols-2 gap-4'>
-                    <SettingsItem label='number of colors'>
-                        <NumberInput
-                            className={{ input: 'text-3xl' }}
-                            value={selectPaletteSize(lantanaState)}
-                            minValue={0}
-                            maxValue={30}
-                            step={1}
-                            precision={0}
-                            onChange={handleChangePaletteSize}
-                        />
-                    </SettingsItem>
+                    <Card>
+                        <CardTitle title='number of colors' />
+                        <CardContent>
+                            <NumberInput
+                                large
+                                value={selectPaletteSize(lantanaState)}
+                                min={0}
+                                max={30}
+                                step={1}
+                                precision={0}
+                                onChangeValue={handleChangePaletteSize}
+                            />
+                        </CardContent>
+                    </Card>
 
-                    <SettingsItem label='center shift'>
-                        <NumberInput
-                            className={{ input: 'text-3xl' }}
-                            value={selectGamma(lantanaState)}
-                            minValue={0}
-                            maxValue={5}
-                            step={0.1}
-                            precision={1}
-                            onChange={handleChangeGamma}
-                        />
-                    </SettingsItem>
+                    <Card>
+                        <CardTitle title='center shift' />
+                        <CardContent>
+                            <NumberInput
+                                large
+                                value={selectGamma(lantanaState)}
+                                min={0}
+                                max={5}
+                                step={0.1}
+                                precision={1}
+                                onChangeValue={handleChangeGamma}
+                            />
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </div>

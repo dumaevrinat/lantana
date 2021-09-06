@@ -27,10 +27,10 @@ const App: FC = () => {
     const [globalState, globalDispatch] = useReducer(globalReducer, globalInitialState)
 
     return (
-        <GlobalContext.Provider value={{ globalState: globalState, dispatch: globalDispatch }}>
-            <LantanaContext.Provider value={{ lantanaState: lantanaState, dispatch: lantanaDispatch }}>
-                <ColorBrewerContext.Provider value={{ colorBrewerState: colorBrewerState, dispatch: colorBrewerDispatch }}>
-                    <CubehelixContext.Provider value={{ cubehelixState: cubehelixState, dispatch: cubehelixDispatch }}>
+        <GlobalContext.Provider value={{ globalState, dispatch: globalDispatch }}>
+            <LantanaContext.Provider value={{ lantanaState, dispatch: lantanaDispatch }}>
+                <ColorBrewerContext.Provider value={{ colorBrewerState, dispatch: colorBrewerDispatch }}>
+                    <CubehelixContext.Provider value={{ cubehelixState, dispatch: cubehelixDispatch }}>
                         <div className={style.root}>
                             <Header />
 

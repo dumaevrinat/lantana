@@ -1,0 +1,15 @@
+.large-control {
+    @apply flex flex-grow flex-col gap-1 pb-1;
+}
+
+.large-control__content {
+    @apply flex justify-between;
+}
+
+.large-control__content-label {
+    @apply select-none mr-2;
+}
+
+.large-control__content-input {
+    @apply w-14 text-right;
+}

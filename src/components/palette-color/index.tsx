@@ -3,15 +3,10 @@ import clsx from 'clsx'
 import copy from 'copy-to-clipboard'
 import { FC, useState } from 'react'
 import { isLightColor } from '../../utils/color'
+import './palette-color.css'
 
 export interface PaletteColorProps {
     color: Color
-}
-
-const style = {
-    paletteColor: 'group flex flex-grow items-stretch flex-basis-1 hover:flex-basis-44 h-44 overflow-hidden tap-highlight-transparent cursor-pointer transition-all ease-in-out',
-    content: 'flex flex-grow justify-center items-center opacity-0 group-hover:opacity-100 transition-all ease-in-out select-none',
-    label: 'font-bold md:text-2xl'
 }
 
 const PaletteColor: FC<PaletteColorProps> = (props: PaletteColorProps) => {
@@ -29,17 +24,20 @@ const PaletteColor: FC<PaletteColorProps> = (props: PaletteColorProps) => {
 
     return (
         <div
-            className={style.paletteColor}
+            className='palette-color group'
             style={{ backgroundColor: color.hex() }}
         >
             <div
-                className={clsx(style.content, isCopied && 'animate-bounce-1')}
+                className={clsx(
+                    'palette-color__content',
+                    isCopied && 'palette-color__content--copied'
+                )}
                 onClick={handleClick}
                 onAnimationEnd={() => setIsCopied(false)}
             >
                 <span className={clsx(
-                    style.label,
-                    isLightColor(color) ? 'text-black' : 'text-white'
+                    'palette-color__label',
+                    isLightColor(color) ? 'palette-color__label--dark' : 'palette-color__label--light'
                 )}
                 >
                     {isCopied ? 'Copy!' : label}
