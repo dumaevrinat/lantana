@@ -6,6 +6,9 @@ import TabLink from '../tab-link'
 import LantanaLogo from '../logo'
 import Button from '../button'
 import './header.css'
+import Card from '../card'
+import CardContent from '../card-content'
+import CardTitle from '../card-title'
 
 const Header: FC = () => {
     const paletteColors = usePaletteColors()
@@ -34,15 +37,13 @@ const Header: FC = () => {
                 </TabLink>
             </div>
 
-            <div className='header__actions'>
-                <label>
-                    copy
-                </label>
-                <div className='header__actions-buttons'>
-                    <Button materialIconName='data_array' title='array' onClick={handleClickCopyJsonArray} />
-                    <Button materialIconName='gradient' title='css gradient' onClick={handleClickCopyCssGradient} />
-                </div>
-            </div>
+            <Card className='header__actions'>
+                <CardTitle title='actions' />
+                <CardContent className='header__actions-buttons'>
+                    <Button materialIconName='data_array' label='array' onClick={handleClickCopyJsonArray} />
+                    <Button materialIconName='gradient' label='css gradient' onClick={handleClickCopyCssGradient} />
+                </CardContent>
+            </Card>
         </header>
     )
 }
