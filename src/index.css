@@ -4,7 +4,7 @@
 
 @layer base {
     html, body, #root {
-        @apply h-full bg-white text-black;
+        @apply h-full dark:bg-black bg-white dark:text-white text-black transition-colors;
     }
 
     label, span {

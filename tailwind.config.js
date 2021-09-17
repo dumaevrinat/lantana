@@ -7,17 +7,17 @@ module.exports = {
         './src/**/*.{js,jsx,ts,tsx}',
         './public/index.html'
     ],
-    darkMode: false,
+    darkMode: 'media',
     theme: {
         colors: {
             transparent: 'transparent',
-            black: colors.gray[900],
+            black: colors.black,
             white: colors.white,
-            gray: {...colors.gray}
+            gray: {...colors.trueGray}
         },
         extend: {
             borderColor: {
-                DEFAULT: colors.gray[900]
+                DEFAULT: colors.black
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],

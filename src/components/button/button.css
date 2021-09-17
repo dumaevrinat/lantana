@@ -1,15 +1,13 @@
-@layer components {
-    .button {
-        @apply flex items-center justify-center gap-2 py-2 px-6 rounded-3xl outline-none appearance-none tap-highlight-transparent transition-all;
-        @apply hover:bg-gray-100 border-2 active:bg-black active:text-white;
-        @apply text-lg sm:text-xl;
-    }
-    
-    .button--action {
-        @apply px-2;
-    }
-    
-    .button__icon {
-        @apply align-middle;
-    }
+.button {
+    @apply flex items-center justify-center gap-2 py-2 px-6 rounded-2xl outline-none appearance-none tap-highlight-transparent transition-all;
+    @apply bg-black text-white hover:bg-gray-900 dark:hover:bg-gray-100 dark:bg-white dark:text-black transform active:scale-95;
+    @apply text-lg sm:text-xl;
+}
+
+.button--action {
+    @apply px-2;
+}
+
+.button__icon {
+    @apply align-middle;
 }
