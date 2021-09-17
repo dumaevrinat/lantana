@@ -26,6 +26,8 @@ const NumberInput: FC<NumberInputProps> = (props: NumberInputProps) => {
 
     const setParsedValue = (parsedValue: number) => {
         if (!isNaN(parsedValue)) {
+            parsedValue = toPrecision(parsedValue, precision)
+            
             if (parsedValue > max) {
                 onChangeValue(max)
             }
