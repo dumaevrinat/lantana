@@ -34,7 +34,7 @@ export const paletteColorsString = selector<string>({
 })
 
 export const paletteColorsCssGradient = selector<string>({
-    key: 'globalPaletteColorsString',
+    key: 'globalPaletteColorsCssGradient',
     get: ({ get }) => {
         return `linear-gradient(to right, ${get(paletteColors).toString()})`
     }
