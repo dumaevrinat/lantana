@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { ChangeEvent, FC, InputHTMLAttributes, useEffect, useState, WheelEvent } from 'react'
-import { toPrecision } from '../../utils/number'
+import { toPrecision } from '../../../utils/number'
 import Input from '../input'
 import './number-input.css'
 

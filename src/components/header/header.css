@@ -1,15 +1,7 @@
 .header {
-    @apply flex flex-col flex-nowrap items-stretch justify-between pt-3 sm:pt-6 px-3 sm:px-6 gap-4 sm:gap-8 no-scrollbar overflow-x-scroll transition-all animate-fadein;
+    @apply flex flex-col flex-nowrap items-stretch justify-between pt-3 sm:pt-6 gap-4 sm:gap-8 transition-all animate-fadein;
 }
 
 .header__tabs {
-    @apply flex flex-nowrap gap-4;
-}
-
-.header__actions {
-    @apply flex;
-}
-
-.header__actions-buttons {
-    @apply min-w-max gap-2;
+    @apply flex flex-nowrap gap-4 px-3 sm:px-6 no-scrollbar overflow-x-scroll;
 }

@@ -1,9 +1,11 @@
 import { ChangeEvent, FC, useState } from 'react'
 import chroma, { Color } from 'chroma-js'
 import { colorToPercentageHsl, formatHexString, isValidHex, percentageHslToColor } from '../../utils/color'
-import LargeControl from '../large-control'
-import Input from '../input'
+import LargeControl from '../base/large-control'
+import Input from '../base/input'
 import './color-picker.css'
+import Card from '../base/card'
+import CardContent from '../base/card-content'
 
 export interface ColorPickerProps {
     color: Color
@@ -62,14 +64,14 @@ const ColorPicker: FC<ColorPickerProps> = (props: ColorPickerProps) => {
 
 
     return (
-        <div className='color-picker'>
-                <Input
-                    className='color-picker__title'
-                    size={6}
-                    value={hex}
-                    onChange={handleChangeHex}
-                />
-            <div className='color-picker__controls'>
+        <Card className='color-picker'>
+            <Input
+                className='color-picker__title'
+                size={6}
+                value={hex}
+                onChange={handleChangeHex}
+            />
+            <CardContent className='color-picker__controls'>
                 <LargeControl
                     title='hue'
                     value={hue}
@@ -97,8 +99,8 @@ const ColorPicker: FC<ColorPickerProps> = (props: ColorPickerProps) => {
                     precision={0}
                     onChange={handleChangeLightness}
                 />
-            </div>
-        </div>
+            </CardContent>
+        </Card>
     )
 }
 

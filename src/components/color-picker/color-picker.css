@@ -1,5 +1,5 @@
 .color-picker {
-    @apply flex flex-grow flex-col;
+    @apply flex-col;
 }
 
 .color-picker__title {
@@ -7,5 +7,5 @@
 }
 
 .color-picker__controls {
-    @apply flex flex-1 flex-col justify-between gap-4 sm:gap-5;
+    @apply flex-col content-stretch justify-between gap-4 sm:gap-5;
 }

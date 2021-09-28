@@ -1,14 +1,15 @@
 import { FC } from 'react'
+import { useRecoilValue } from 'recoil'
+import { paletteColors } from '../../state/global'
 import PaletteColor from '../palette-color'
-import { usePaletteColors } from '../../hooks/use-palette-colors'
 import './palette.css'
 
 const Palette: FC = () => {
-    const paletteColors = usePaletteColors()
+    const colors = useRecoilValue(paletteColors)
 
     return (
         <div className='palette'>
-            {paletteColors.map((color, index) =>
+            {colors.map((color, index) =>
                 <PaletteColor
                     key={index}
                     color={color}

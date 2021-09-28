@@ -1,53 +1,42 @@
-import { FC, useReducer } from 'react'
+import { FC } from 'react'
 import Footer from './components/footer'
 import Header from './components/header'
-import { initialState as lantanaInitialState, lantanaReducer } from './state/lantana/reducer'
-import { initialState as cubehelixInitialState, cubehelixReducer } from './state/cubehelix/reducer'
-import { initialState as colorBrewerInitialState, colorBrewerReducer } from './state/color-brewer/reducer'
-import { initialState as globalInitialState, globalReducer } from './state/global/reducer'
-import { LantanaContext } from './state/lantana/context'
-import { ColorBrewerContext } from './state/color-brewer/context'
-import { CubehelixContext } from './state/cubehelix/context'
-import { GlobalContext } from './state/global/context'
-import ColorBrewer from './settings/ColorBrewer'
-import Lantana from './settings/Lantana'
 import { SettingsName } from './types'
 import Palette from './components/palette'
-import Cubehelix from './settings/Cubehelix'
+import { RecoilRoot, useRecoilValue } from 'recoil'
+import { currentSettings } from './state/global'
+import CardActions from './components/card-actions'
+import Lantana from './components/settings/lantana'
+import ColorBrewer from './components/settings/color-brewer'
+import Cubehelix from './components/settings/cubehelix'
 
-const style = {
-    root: 'max-w-screen-xl min-h-full m-auto flex flex-col content-stretch gap-6',
-    content: 'flex flex-1 flex-col gap-6 px-3 sm:px-6',
+const CurrentSettings: FC = () => {
+    const settings = useRecoilValue(currentSettings)
+
+    return (
+        <>
+            {settings === SettingsName.Lantana && <Lantana />}
+            {settings === SettingsName.ColorBrewer && <ColorBrewer />}
+            {settings === SettingsName.Cubehelix && <Cubehelix />}
+        </>
+    )
 }
 
 const App: FC = () => {
-    const [lantanaState, lantanaDispatch] = useReducer(lantanaReducer, lantanaInitialState)
-    const [colorBrewerState, colorBrewerDispatch] = useReducer(colorBrewerReducer, colorBrewerInitialState)
-    const [cubehelixState, cubehelixDispatch] = useReducer(cubehelixReducer, cubehelixInitialState)
-    const [globalState, globalDispatch] = useReducer(globalReducer, globalInitialState)
-
     return (
-        <GlobalContext.Provider value={{ globalState, dispatch: globalDispatch }}>
-            <LantanaContext.Provider value={{ lantanaState, dispatch: lantanaDispatch }}>
-                <ColorBrewerContext.Provider value={{ colorBrewerState, dispatch: colorBrewerDispatch }}>
-                    <CubehelixContext.Provider value={{ cubehelixState, dispatch: cubehelixDispatch }}>
-                        <div className={style.root}>
-                            <Header />
+        <RecoilRoot>
+            <div className='max-w-screen-xl min-h-full m-auto flex flex-col content-stretch gap-6'>
+                <Header />
 
-                            <div className={style.content}>
-                                <Palette />
+                <div className='flex flex-1 flex-col gap-4 px-3 sm:px-6'>
+                    <Palette />
+                    <CardActions />
+                    <CurrentSettings />
+                </div>
 
-                                {globalState.currentSettings === SettingsName.Lantana && <Lantana />}
-                                {globalState.currentSettings === SettingsName.ColorBrewer && <ColorBrewer />}
-                                {globalState.currentSettings === SettingsName.Cubehelix && <Cubehelix />}
-                            </div>
-
-                            <Footer />
-                        </div>
-                    </CubehelixContext.Provider>
-                </ColorBrewerContext.Provider>
-            </LantanaContext.Provider>
-        </GlobalContext.Provider>
+                <Footer />
+            </div>
+        </RecoilRoot>
     )
 }
 

@@ -1,9 +1,8 @@
-import React, { ChangeEvent, FC, useContext } from 'react'
-import { setCurrentSettings } from '../../state/global/actions'
-import { GlobalContext } from '../../state/global/context'
-import { selectCurrentSettings } from '../../state/global/selectors'
+import React, { ChangeEvent, FC } from 'react'
+import { useRecoilState } from 'recoil'
+import { currentSettings as globalCurrentSettings } from '../../state/global'
 import { SettingsName } from '../../types'
-import Radio from '../radio-input'
+import Radio from '../base/radio-input'
 import './tab-link.css'
 
 export interface TabLinkProps {
@@ -14,13 +13,13 @@ export interface TabLinkProps {
 const TabLink: FC<TabLinkProps> = (props: TabLinkProps) => {
     const { settings, children } = props
 
-    const { globalState, dispatch } = useContext(GlobalContext)
-    const checked = selectCurrentSettings(globalState) === settings
+    const [currentSettings, setCurrentSettings] = useRecoilState(globalCurrentSettings)
+    const checked = currentSettings === settings
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const settings = e.target.value
 
-        dispatch(setCurrentSettings(settings as SettingsName))
+        setCurrentSettings(settings as SettingsName)
     }
 
     return (

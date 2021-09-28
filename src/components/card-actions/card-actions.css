@@ -1,0 +1,7 @@
+.action-content {
+    @apply gap-2;
+}
+
+.action-content__button {
+    @apply flex-grow sm:flex-grow-0;
+}
