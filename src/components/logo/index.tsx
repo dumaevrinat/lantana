@@ -1,12 +1,10 @@
-import { FC, useContext } from 'react'
-import { LantanaContext } from '../../state/lantana/context'
-import { selectColorsFromColorPickers } from '../../state/lantana/selectors'
+import { FC } from 'react'
+import { useRecoilValue } from 'recoil'
+import { colorPickersColors } from '../../state/lantana'
 import './logo.css'
 
 const LantanaLogo: FC = () => {
-    const { lantanaState } = useContext(LantanaContext)
-
-    const colors = selectColorsFromColorPickers(lantanaState)
+    const colors = useRecoilValue(colorPickersColors)
 
     return (
         <>

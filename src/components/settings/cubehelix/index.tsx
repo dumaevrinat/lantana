@@ -1,51 +1,56 @@
-import { FC, useContext, useState } from 'react'
-import { CubehelixContext } from '../state/cubehelix/context'
-import { setDark, setGamma, setLight, setPaletteSize, setRotations, setStart } from '../state/cubehelix/actions'
-import NumberInput from '../components/number-input'
-import { selectDark, selectGamma, selectLight, selectPaletteSize, selectRotations, selectStart } from '../state/cubehelix/selectors'
-import LargeControl from '../components/large-control'
-import Card from '../components/card'
-import CardContent from '../components/card-content'
-import CardTitle from '../components/card-title'
-
-const style = {
-    basicSettings: 'flex-col content-stretch gap-4 sm:gap-5'
-}
+import { FC } from 'react'
+import NumberInput from '../../base/number-input'
+import LargeControl from '../../base/large-control'
+import Card from '../../base/card'
+import CardContent from '../../base/card-content'
+import CardTitle from '../../base/card-title'
+import { useRecoilState } from 'recoil'
+import { size as cubehelixSize } from '../../../state/cubehelix'
+import { start as cubehelixStart } from '../../../state/cubehelix'
+import { rotations as cubehelixRotations } from '../../../state/cubehelix'
+import { gamma as cubehelixGamma } from '../../../state/cubehelix'
+import { dark as cubehelixDark} from '../../../state/cubehelix'
+import { light as cubehelixLight } from '../../../state/cubehelix'
 
 const Cubehelix: FC = () => {
-    const { cubehelixState, dispatch } = useContext(CubehelixContext)
+    const [size, setSize] = useRecoilState(cubehelixSize)
+    const [start, setStart] = useRecoilState(cubehelixStart)
+    const [rotations, setRotations] = useRecoilState(cubehelixRotations)
+    const [gamma, setGamma] = useRecoilState(cubehelixGamma)
+    const [dark, setDark] = useRecoilState(cubehelixDark)
+    const [light, setLight] = useRecoilState(cubehelixLight)
 
     const handleChangePaletteSize = (size: number) => {
-        dispatch(setPaletteSize(size))
+        setSize(size)
     }
 
     const handleChangeStart = (start: number) => {
-        dispatch(setStart(start))
+        setStart(start)
     }
 
     const handleChangeRotations = (rotations: number) => {
-        dispatch(setRotations(rotations))
+        setRotations(rotations)
     }
 
     const handleChangeDark = (dark: number) => {
-        dispatch(setDark(dark))
+        setDark(dark)
     }
 
     const handleChangeLight = (light: number) => {
-        dispatch(setLight(light))
+        setLight(light)
     }
 
     const handleChangeGamma = (gamma: number) => {
-        dispatch(setGamma(gamma))
+        setGamma(gamma)
     }
 
     return (
         <div className='grid md:grid-cols-2 gap-4'>
             <Card>
-                <CardContent className={style.basicSettings}>
+                <CardContent className='flex-col content-stretch gap-4 sm:gap-5'>
                     <LargeControl
                         title='start'
-                        value={selectStart(cubehelixState)}
+                        value={start}
                         minValue={0}
                         maxValue={360}
                         step={1}
@@ -55,7 +60,7 @@ const Cubehelix: FC = () => {
 
                     <LargeControl
                         title='rotations'
-                        value={selectRotations(cubehelixState)}
+                        value={rotations}
                         minValue={-2}
                         maxValue={2}
                         step={0.01}
@@ -65,7 +70,7 @@ const Cubehelix: FC = () => {
 
                     <LargeControl
                         title='gamma'
-                        value={selectGamma(cubehelixState)}
+                        value={gamma}
                         minValue={0}
                         maxValue={1}
                         step={0.01}
@@ -81,7 +86,7 @@ const Cubehelix: FC = () => {
                         <CardContent>
                             <LargeControl
                                 title='dark'
-                                value={selectDark(cubehelixState)}
+                                value={dark}
                                 minValue={0}
                                 maxValue={1}
                                 step={0.01}
@@ -95,7 +100,7 @@ const Cubehelix: FC = () => {
                         <CardContent>
                             <LargeControl
                                 title='light'
-                                value={selectLight(cubehelixState)}
+                                value={light}
                                 minValue={0}
                                 maxValue={1}
                                 step={0.01}
@@ -111,7 +116,7 @@ const Cubehelix: FC = () => {
                     <CardContent>
                         <NumberInput
                             large
-                            value={selectPaletteSize(cubehelixState)}
+                            value={size}
                             min={0}
                             max={30}
                             step={1}
