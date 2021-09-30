@@ -13,7 +13,7 @@ module.exports = {
             transparent: 'transparent',
             black: colors.black,
             white: colors.white,
-            gray: {...colors.trueGray}
+            gray: { ...colors.trueGray }
         },
         extend: {
             borderColor: {
@@ -77,30 +77,29 @@ module.exports = {
     },
     plugins: [
         plugin(({ addUtilities }) => {
-          const newUtilities = {
-            '.tap-highlight-transparent': {
-                '-webkit-tap-highlight-color': 'transparent'
-            },
-            '.no-scrollbar': {
-                '-ms-overflow-style': 'none',
-                'scrollbar-width': 'none'
-            },
-            '.no-scrollbar::-webkit-scrollbar': {
-                display: 'none'
-            },
-            '.flex-basis-1': {
-                'flex-basis': '1px'
-            },
-            '.flex-basis-44': {
-                'flex-basis': '11rem'
-            },
-            '.content-stretch': {
-                'align-content': 'stretch'
+            const newUtilities = {
+                '.tap-highlight-transparent': {
+                    '-webkit-tap-highlight-color': 'transparent'
+                },
+                '.no-scrollbar': {
+                    '-ms-overflow-style': 'none',
+                    'scrollbar-width': 'none'
+                },
+                '.no-scrollbar::-webkit-scrollbar': {
+                    display: 'none'
+                },
+                '.flex-basis-1': {
+                    'flex-basis': '1px'
+                },
+                '.flex-basis-44': {
+                    'flex-basis': '11rem'
+                },
+                '.content-stretch': {
+                    'align-content': 'stretch'
+                }
             }
-          }
-    
-          addUtilities(newUtilities, ['responsive', 'hover'])
+
+            addUtilities(newUtilities, ['responsive', 'hover'])
         })
-      ]
-    
+    ]
 }
