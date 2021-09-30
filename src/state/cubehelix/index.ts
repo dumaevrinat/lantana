@@ -1,6 +1,7 @@
 import chroma, { Color } from 'chroma-js'
 import { Scale } from 'chroma-js'
-import { atom, selector } from 'recoil'
+import { selector } from 'recoil'
+import { persistedAtom as atom} from '../persist'
 
 export const size = atom<number>({
     key: 'cubehelixSize',

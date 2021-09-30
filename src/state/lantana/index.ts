@@ -1,6 +1,7 @@
 import chroma, { Color, InterpolationMode } from 'chroma-js'
 import { nanoid } from 'nanoid'
-import { atom, selector } from 'recoil'
+import { selector } from 'recoil'
+import { persistedAtom as atom} from '../persist'
 import { Picker } from '../../types'
 
 export const colorPickers = atom<Picker[]>({
@@ -8,11 +9,11 @@ export const colorPickers = atom<Picker[]>({
     default: [
         {
             id: nanoid(),
-            color: chroma.hsl(358, 1, 0.92)
+            hex: chroma.hsl(358, 1, 0.92).hex()
         },
         {
             id: nanoid(),
-            color: chroma.hsl(238, 1, 0.10)
+            hex: chroma.hsl(238, 1, 0.10).hex()
         },
     ]
 })
@@ -35,7 +36,7 @@ export const gamma = atom<number>({
 export const colorPickersColors = selector<Color[]>({
     key: 'lantanaColorPickersColors',
     get: ({ get }) => {
-        return get(colorPickers).map(picker => picker.color)
+        return get(colorPickers).map(picker => chroma(picker.hex))
     }
 })
 

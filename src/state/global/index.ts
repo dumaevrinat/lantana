@@ -1,5 +1,6 @@
 import { Color } from 'chroma-js'
-import { atom, selector } from 'recoil'
+import { selector } from 'recoil'
+import { persistedAtom as atom} from '../persist'
 import { SettingsName } from '../../types'
 import { colorBrewerColors } from '../color-brewer'
 import { cubehelixColors } from '../cubehelix'

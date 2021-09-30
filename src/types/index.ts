@@ -1,8 +1,8 @@
-import { brewer, Color, InterpolationMode } from 'chroma-js'
+import { brewer, InterpolationMode } from 'chroma-js'
 
 export interface Picker {
     id: string
-    color: Color
+    hex: string
 }
 
 export interface Palette {
