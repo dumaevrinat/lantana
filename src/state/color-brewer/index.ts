@@ -1,11 +1,12 @@
 import chroma from 'chroma-js'
 import { Color } from 'chroma-js'
-import { atom, selector } from 'recoil'
+import { selector } from 'recoil'
+import { persistedAtom as atom } from '../persist'
 import { ColorBrewerGroupName, ColorBrewerPaletteName } from '../../types'
 
 export const size = atom<number>({
     key: 'colorBrewerSize',
-    default: 9
+    default: 9,
 })
 
 export const groupName = atom<ColorBrewerGroupName>({

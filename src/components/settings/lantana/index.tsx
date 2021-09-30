@@ -11,6 +11,7 @@ import { size as lantanaSize } from '../../../state/lantana'
 import { gamma as lantanaGamma } from '../../../state/lantana'
 import { mode as lantanaMode } from '../../../state/lantana'
 import { colorPickers as lantanaColorPickers } from '../../../state/lantana'
+import chroma from 'chroma-js'
 
 const Lantana: FC = () => {
     const availableModes: Array<InterpolationMode> = ['rgb', 'lrgb', 'hsl', 'hcl', 'hsi', 'lab', 'lch']
@@ -21,7 +22,10 @@ const Lantana: FC = () => {
     const [colorPickers, setColorPickers] = useRecoilState(lantanaColorPickers)
 
     const handleChangeColor = (id: string) => (color: Color) => {
-        const updatedColorPicker = { id, color }
+        const updatedColorPicker = {
+            id,
+            hex: color.hex()
+        }
 
         setColorPickers(colorPickers.map(picker =>
             picker.id === id ?
@@ -49,7 +53,7 @@ const Lantana: FC = () => {
             {colorPickers.map(picker =>
                 <ColorPicker
                     key={picker.id}
-                    color={picker.color}
+                    color={chroma(picker.hex)}
                     onChangeColor={handleChangeColor(picker.id)}
                 />
             )}
