@@ -9,6 +9,7 @@ import CardActions from './components/card-actions'
 import Lantana from './components/settings/lantana'
 import ColorBrewer from './components/settings/color-brewer'
 import Cubehelix from './components/settings/cubehelix'
+import CardStart from './components/card-start'
 
 const CurrentSettings: FC = () => {
     const settings = useRecoilValue(currentSettings)
@@ -25,10 +26,12 @@ const CurrentSettings: FC = () => {
 const App: FC = () => {
     return (
         <RecoilRoot>
-            <div className='max-w-screen-xl min-h-full m-auto flex flex-col content-stretch gap-6'>
+
+            <div className='max-w-screen-xl m-auto pt-3 sm:pt-6 flex flex-col transition-all content-stretch'>
+                <CardStart />
                 <Header />
 
-                <div className='flex flex-1 flex-col gap-4 px-3 sm:px-6'>
+                <div className='flex flex-1 flex-col gap-4 my-4 px-3 sm:px-6'>
                     <Palette />
                     <CardActions />
                     <CurrentSettings />

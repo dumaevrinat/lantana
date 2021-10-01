@@ -1,0 +1,27 @@
+.card-start-wrapper {
+    @apply transition-all duration-300 transform px-3 sm:px-6;
+}
+
+.card-start-wrapper--open {
+    @apply max-h-48 mb-6;
+}
+
+.card-start-wrapper--close {
+    @apply max-h-0 -translate-y-44 opacity-0;
+}
+
+.card-start {
+    @apply content-stretch cursor-pointer tap-highlight-transparent transition-all duration-300 transform group-hover:translate-y-1;
+}
+
+.card-start__content {
+    @apply flex-col content-center items-center transition-all duration-300 gap-0 group-hover:gap-2;
+}
+
+.card-start__content-icon {
+    @apply transition-all transform duration-300 ease-out max-h-0 group-hover:max-h-12 scale-0 group-hover:scale-100;
+}
+
+.card-start__content-label {
+    @apply text-base cursor-pointer select-none text-center;
+}

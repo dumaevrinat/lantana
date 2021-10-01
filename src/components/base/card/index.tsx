@@ -1,17 +1,20 @@
 import clsx from 'clsx'
-import React, { FC } from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import './card.css'
 
-export interface CardProps {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
     children: React.ReactNode
 }
 
 const Card: FC<CardProps> = (props: CardProps) => {
-    const { className, children } = props
+    const { className, children, ...restProps } = props
 
     return (
-        <div className={clsx('card', className)}>
+        <div
+            {...restProps}
+            className={clsx('card', className)}
+        >
             {children}
         </div>
     )

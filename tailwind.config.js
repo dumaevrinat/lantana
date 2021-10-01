@@ -13,7 +13,7 @@ module.exports = {
             transparent: 'transparent',
             black: colors.black,
             white: colors.white,
-            gray: {...colors.trueGray}
+            gray: { ...colors.trueGray }
         },
         extend: {
             borderColor: {
@@ -28,7 +28,7 @@ module.exports = {
             },
             animation: {
                 'bounce-1': 'bounce 350ms ease-in-out 1',
-                'fadein': 'fadein 350ms ease-out 1'
+                'fadein': 'fadein 350ms ease-in-out 1'
             },
             keyframes: {
                 bounce: {
@@ -52,7 +52,6 @@ module.exports = {
                         animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
                     }
                 }
-
             }
         },
     },
@@ -70,6 +69,8 @@ module.exports = {
             display: ['hover', 'group-hover'],
             width: ['hover', 'group-hover'],
             maxWidth: ['hover', 'group-hover'],
+            maxHeight: ['hover', 'group-hover'],
+            gap: ['hover', 'group-hover'],
             flexGrow: ['hover', 'group-hover'],
             rotate: ['active', 'group-hover'],
             translate: ['active', 'group-hover']
@@ -77,30 +78,29 @@ module.exports = {
     },
     plugins: [
         plugin(({ addUtilities }) => {
-          const newUtilities = {
-            '.tap-highlight-transparent': {
-                '-webkit-tap-highlight-color': 'transparent'
-            },
-            '.no-scrollbar': {
-                '-ms-overflow-style': 'none',
-                'scrollbar-width': 'none'
-            },
-            '.no-scrollbar::-webkit-scrollbar': {
-                display: 'none'
-            },
-            '.flex-basis-1': {
-                'flex-basis': '1px'
-            },
-            '.flex-basis-44': {
-                'flex-basis': '11rem'
-            },
-            '.content-stretch': {
-                'align-content': 'stretch'
+            const newUtilities = {
+                '.tap-highlight-transparent': {
+                    '-webkit-tap-highlight-color': 'transparent'
+                },
+                '.no-scrollbar': {
+                    '-ms-overflow-style': 'none',
+                    'scrollbar-width': 'none'
+                },
+                '.no-scrollbar::-webkit-scrollbar': {
+                    display: 'none'
+                },
+                '.flex-basis-1': {
+                    'flex-basis': '1px'
+                },
+                '.flex-basis-44': {
+                    'flex-basis': '11rem'
+                },
+                '.content-stretch': {
+                    'align-content': 'stretch'
+                }
             }
-          }
-    
-          addUtilities(newUtilities, ['responsive', 'hover'])
+
+            addUtilities(newUtilities, ['responsive', 'hover'])
         })
-      ]
-    
+    ]
 }

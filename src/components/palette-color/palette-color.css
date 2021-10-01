@@ -11,7 +11,7 @@
 }
 
 .palette-color__label {
-    @apply font-bold md:text-2xl;
+    @apply font-semibold md:text-2xl;
 }
 
 .palette-color__label--light {

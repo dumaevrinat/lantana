@@ -1,5 +1,5 @@
 .header {
-    @apply flex flex-col flex-nowrap items-stretch justify-between pt-3 sm:pt-6 gap-4 sm:gap-8 transition-all animate-fadein;
+    @apply flex flex-col flex-nowrap items-stretch justify-between gap-4 sm:gap-8 transition-all animate-fadein;
 }
 
 .header__tabs {
