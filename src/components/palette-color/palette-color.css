@@ -1,5 +1,5 @@
 .palette-color {
-    @apply flex flex-grow items-stretch flex-basis-1 hover:flex-basis-44 h-44 overflow-hidden tap-highlight-transparent cursor-pointer transition-all;
+    @apply flex flex-grow items-stretch flex-basis-1 hover:flex-basis-44 overflow-hidden tap-highlight-transparent cursor-pointer transition-all;
 }
 
 .palette-color__content {

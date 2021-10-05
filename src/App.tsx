@@ -31,7 +31,7 @@ const App: FC = () => {
                 <CardStart />
                 <Header />
 
-                <div className='flex flex-1 flex-col gap-4 my-4 px-3 sm:px-6'>
+                <div className='flex flex-1 flex-col gap-4 pb-4 px-3 sm:px-6'>
                     <Palette />
                     <CardActions />
                     <CurrentSettings />
