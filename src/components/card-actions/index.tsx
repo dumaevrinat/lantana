@@ -22,7 +22,7 @@ const CardActions: FC = () => {
     
     return (
         <Card>
-            <CardTitle title='actions' />
+            <CardTitle title='copy actions' />
             <CardContent className='action-content'>
                 <Button className='action-content__button' materialIconName='data_array' label='array' onClick={handleClickCopyJsonArray} />
                 <Button className='action-content__button' materialIconName='gradient' label='css gradient' onClick={handleClickCopyCssGradient} />

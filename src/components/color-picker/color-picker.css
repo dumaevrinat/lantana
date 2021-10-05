@@ -7,5 +7,5 @@
 }
 
 .color-picker__controls {
-    @apply flex-col content-stretch justify-between gap-4 sm:gap-5;
+    @apply flex-col content-stretch justify-between gap-3 sm:gap-4;
 }

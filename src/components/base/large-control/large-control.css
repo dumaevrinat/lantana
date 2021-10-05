@@ -3,11 +3,11 @@
 }
 
 .large-control__content {
-    @apply flex justify-between;
+    @apply flex justify-between items-end;
 }
 
 .large-control__content-label {
-    @apply select-none mr-2;
+    @apply text-base uppercase text-gray-500 dark:text-gray-400  select-none mr-2;
 }
 
 .large-control__content-input {
