@@ -1,3 +1,7 @@
 .palette {
-    @apply flex w-full overflow-hidden rounded-3xl animate-fadein;
+    @apply flex w-full h-44 transition-all duration-300 shadow-none overflow-hidden rounded-3xl animate-fadein;
+}
+
+.palette--sticky {
+    @apply sticky z-50 top-4 shadow-xl;
 }
